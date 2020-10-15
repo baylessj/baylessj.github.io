@@ -31,4 +31,8 @@ A related question to the decision of what metric to track is the decision of  w
 
 ## Bugayenko the Egoist
 
-The primary reason for my dislike of Bugayenko is his character's Egoistic attitude. The beginning suggests to get a role where you can wield power over your coworkers without holding any real responsibility. The protagonist is playing "poker with Tony for a place in the hierarchy" while taking a software architect role for the supposed lack of responsibility with the position. Bugayenko says that his  goal with his role is to work exclusively on his own open-source projects while receiving a paycheck, bending his coworkers to his ideals, and incessantly  quoting Nietzche throughout. Seriously, the guy needs to stop with the appeals to Nietzche and other philosophers.  ## TL;DR I like the points that the Code Ahead made, but I don't think I actually _enjoyed_ reading the book. I would recommend reading about the book's main discussion points elsewhere; it's not worth the ~$40 price tag.
+The primary reason for my dislike of Bugayenko is his character's Egoistic attitude. The beginning suggests to get a role where you can wield power over your coworkers without holding any real responsibility. The protagonist is playing "poker with Tony for a place in the hierarchy" while taking a software architect role for the supposed lack of responsibility with the position. Bugayenko says that his  goal with his role is to work exclusively on his own open-source projects while receiving a paycheck, bending his coworkers to his ideals, and incessantly  quoting Nietzche throughout. Seriously, the guy needs to stop with the appeals to Nietzche and other philosophers.  
+
+## TL;DR
+
+I like the points that the Code Ahead made, but I don't think I actually _enjoyed_ reading the book. I would recommend reading about the book's main discussion points elsewhere; it's not worth the ~$40 price tag.
