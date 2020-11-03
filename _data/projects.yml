@@ -1,3 +1,10 @@
+- name: Squiggles
+  description: A library for generating spline-based paths for robots.
+  languages:
+    - devicon-cplusplus-plain
+    - devicon-python-plain
+  website: https://squiggles.readthedocs.io
+  github: https://github.com/baylessj/robotsquiggles
 - name: auToDo
   description: A flexible, intuitive ToDo list app for keeping track of your cars' maintenance needs.
   languages:
