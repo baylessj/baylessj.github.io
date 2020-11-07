@@ -53,9 +53,9 @@ I had some experience with [GoogleTest](https://github.com/google/googletest) fr
 to be an enjoyable testing framework. GoogleTest is set up to be easily
 integrated with an existing CMake project so it was a particularly good fit. The
 README for GoogleTest lists two methods for adding it to an existing project:
-Adding it as a git submodule and installing it as a CMake `ExternalProject`. The
-git submodule is, in my opinion, the easiest installation option. I'm more
-familiar with git than CMake and it was an easy setup process.
+Adding it as a Git submodule and installing it as a CMake `ExternalProject`. The
+Git submodule is, in my opinion, the easiest installation option. I'm more
+familiar with Git than CMake and it was an easy setup process.
 
 I later learned, however, that this method would cause difficulties when
 adding the Squiggles project as a dependency to other projects. I started adding
