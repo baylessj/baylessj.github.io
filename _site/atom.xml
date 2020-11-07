@@ -4,13 +4,244 @@
  <title>The blog of Jonathan Bayless</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000"/>
- <updated>2020-11-03T17:03:38-05:00</updated>
+ <updated>2020-11-06T21:11:07-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jonathan Bayless</name>
    <email>me@jonathanbayless.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Setting up a C++ library with CMake</title>
+   <link href="http://localhost:4000/2020/11/05/squiggles-cmake.html"/>
+   <updated>2020-11-05T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2020/11/05/squiggles-cmake</id>
+   <content type="html">&lt;p&gt;I recently started a new side project, &lt;a href=&quot;https://squiggles.readthedocs.io&quot;&gt;Squiggles&lt;/a&gt;, a C++ library for generating
+spline-based 2D paths for robots. This project was my first time setting up a
+C++ library meant to be included in other projects across different platforms.
+&lt;a href=&quot;https://cmake.org/&quot;&gt;CMake&lt;/a&gt; is the build system typically used in these cases
+and seemed like the right fit for this project. CMake has an impressive set of
+functionality but can be a bit cumbersome to set up. I’ll be walking through the
+build system requirements for this project and how I used CMake to set that up.&lt;/p&gt;
+
+&lt;h2 id=&quot;project-organization&quot;&gt;Project Organization&lt;/h2&gt;
+
+&lt;p&gt;The project’s organization was shaped by two goals: to create a reliable, tested
+library and to visualize the generated paths. These two goals led to the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tst&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vis&lt;/code&gt; folders, respectively. This, along with the standard C/C++
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;include&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src&lt;/code&gt; directories led to the following project structure:&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;squiggles
+  - build
+  - include
+  - src
+  - tst
+  - vis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As is the norm with CMake, each of these source directories (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tst&lt;/code&gt;, and
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vis&lt;/code&gt;) got their own &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; config file.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src&lt;/code&gt; directory got the typical config for a source directory; each of the
+files in the directory were added to the sources list and an executable was
+defined to run the project’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.cpp&lt;/code&gt;. This config also defined a static
+library for use with googletest (more on that later). The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt;
+consists of the following four lines:&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set(BINARY ${CMAKE_PROJECT_NAME})
+file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp)
+add_executable(${BINARY}_run ${SOURCES})
+add_library(${CMAKE_PROJECT_NAME}_lib STATIC ${SOURCES})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The config files for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tst&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vis&lt;/code&gt; directory were determined largely by
+their unique uses.&lt;/p&gt;
+
+&lt;h2 id=&quot;googletest&quot;&gt;GoogleTest&lt;/h2&gt;
+
+&lt;p&gt;I had some experience with &lt;a href=&quot;https://github.com/google/googletest&quot;&gt;GoogleTest&lt;/a&gt; from a previous project and found it
+to be an enjoyable testing framework. GoogleTest is set up to be easily
+integrated with an existing CMake project so it was a particularly good fit. The
+README for GoogleTest lists two methods for adding it to an existing project:
+Adding it as a git submodule and installing it as a CMake &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ExternalProject&lt;/code&gt;. The
+git submodule is, in my opinion, the easiest installation option. I’m more
+familiar with git than CMake and it was an easy setup process.&lt;/p&gt;
+
+&lt;p&gt;I later learned, however, that this method would cause difficulties when
+adding the Squiggles project as a dependency to other projects. I started adding
+Squiggles as an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ExternalProject&lt;/code&gt; to a different CMake project and got hit with
+a variety of errors. These errors all pointed to the same root issue - CMake
+does not play nicely with dependencies sharing a common dependency. In this case
+both Squiggles and its future child project depended on GoogleTest. Both projects
+attempted to install GoogleTest separately and caused conflicts.&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    GoogleTest
+       ^   ^
+       |   |
+Squiggles  |
+    ^      |
+    |------|
+    |
+  Child
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The key to resolving this shared dependency issue would be to only download the
+GoogleTest source and include it in the project when Squiggles was being set
+up in a development environment. One crucial detail to this solution is that
+CMake, when installing an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ExternalProject&lt;/code&gt;, will configure that project by
+downloading the source and all of its submodules, then running its root
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; and the default arguments.&lt;/p&gt;
+
+&lt;p&gt;I switched from the submodule approach to including GoogleTest as an
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ExternalProject&lt;/code&gt; in Squiggles. This switch would allow me to hide the GoogleTest
+installation behind a CMake &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;option&lt;/code&gt;. The default behavior when setting up the
+project, the behavior used by CMake’s project installation process, will be to
+ignore any GoogleTest involvement. Only the static library is built and there’s
+no need to build or run the tests. The development environment, alternatively,
+can toggle that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;option&lt;/code&gt; flag and set up the tests.&lt;/p&gt;
+
+&lt;p&gt;The configuration for GoogleTest needed to be split out into a separate file
+to ensure that it would only be loaded and run when the right option is set.
+This separate config file, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMakeLists.txt.in&lt;/code&gt;, looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;project(external-dependencies NONE)
+
+include(ExternalProject)
+
+ExternalProject_Add(googletest
+  GIT_REPOSITORY    https://github.com/google/googletest.git
+  GIT_TAG           release-1.8.1
+  SOURCE_DIR        &quot;${CMAKE_BINARY_DIR}/googletest-src&quot;
+  BINARY_DIR        &quot;${CMAKE_BINARY_DIR}/googletest-build&quot;
+  CONFIGURE_COMMAND &quot;&quot;
+  BUILD_COMMAND     &quot;&quot;
+  INSTALL_COMMAND   &quot;&quot;
+  TEST_COMMAND      &quot;&quot;
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We then set up the root &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; file to conditionally include the above
+file and install GoogleTest:&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;option(SQUIGGLES_TEST &quot;determines if we're gonna pull googletest&quot; OFF)
+
+if (SQUIGGLES_TEST)
+    # Download and unpack googletest at configure time
+    configure_file(CMakeLists.txt.in external-dependencies/CMakeLists.txt)
+    execute_process(COMMAND ${CMAKE_COMMAND} -G &quot;${CMAKE_GENERATOR}&quot; .
+            RESULT_VARIABLE result
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/external-dependencies )
+    if(result)
+        message(FATAL_ERROR &quot;CMake step for dependencies failed: ${result}&quot;)
+    endif()
+    execute_process(COMMAND ${CMAKE_COMMAND} --build .
+            RESULT_VARIABLE result
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/external-dependencies )
+    if(result)
+        message(FATAL_ERROR &quot;Build step for dependencies failed: ${result}&quot;)
+    endif()
+
+    # Prevent overriding the parent project's compiler/linker
+    # settings on Windows
+    set(gtest_force_shared_crt ON CACHE BOOL &quot;&quot; FORCE)
+
+    # Add googletest directly to our build. This defines
+    # the gtest and gtest_main targets.
+    add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
+                    ${CMAKE_BINARY_DIR}/googletest-build
+                    EXCLUDE_FROM_ALL)
+
+    # The gtest/gtest_main targets carry header search path
+    # dependencies automatically when using CMake 2.8.11 or
+    # later. Otherwise we have to add them here ourselves.
+    if (CMAKE_VERSION VERSION_LESS 2.8.11)
+        include_directories(&quot;${gtest_SOURCE_DIR}/include&quot;)
+    endif()
+endif()
+
+include_directories(include)
+include_directories(vis)
+
+add_subdirectory(src)
+if (SQUIGGLES_TEST)
+    add_subdirectory(tst)
+endif()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; file for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tst&lt;/code&gt; directory is almost identical to the one
+in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src&lt;/code&gt; directory but with the addition of the following two lines:&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;add_test(NAME ${BINARY} COMMAND ${BINARY})
+target_link_libraries(${BINARY} PUBLIC ${CMAKE_PROJECT_NAME}_lib gtest)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;visualization&quot;&gt;Visualization&lt;/h2&gt;
+
+&lt;p&gt;My go-to tool for visualizing any sort of 2D data is Python’s &lt;a href=&quot;https://matplotlib.org/&quot;&gt;Matplotlib&lt;/a&gt;.
+I’m positive that there must be a similar option for C++ out there but it’s
+honestly pretty easy to interact with a C or C++ program from Python.&lt;/p&gt;
+
+&lt;p&gt;I set up the shared library (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.so&lt;/code&gt; on linux, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.dll&lt;/code&gt; on windows) in the root
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; file. I still needed a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; file in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vis&lt;/code&gt;
+directory to get CMake to recognize it as a subdirectory but I was able to keep
+it blank.&lt;/p&gt;
+
+&lt;p&gt;The shared object config consisted of the following lines appended to the root
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set(VIS_SO
+  # A decent sized list of headers and source files needed from the source code...
+  vis/compat.hpp
+  vis/compat.cpp)
+
+add_library(RobotSquiggles SHARED ${VIS_SO})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compat.hpp&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compat.cpp&lt;/code&gt; files defined C-compatible functions for
+interacting with the C++ library. This isn’t the most elegant solution but was
+needed to convert the Object-Oriented design of the library into functions for
+Python’s &lt;em&gt;ctypes&lt;/em&gt; library.&lt;/p&gt;
+
+&lt;p&gt;The Python code loads the shared object from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; directory and calls
+functions from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compat&lt;/code&gt; layer to generate paths for visualization.&lt;/p&gt;
+
+&lt;h2 id=&quot;documentation&quot;&gt;Documentation&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.doxygen.nl/index.html&quot;&gt;Doxygen&lt;/a&gt; is the standard for C/C++ documentation generation. In a similar
+vein as my earlier point about Matplotlib, though, I am used to working instead
+with &lt;a href=&quot;https://www.sphinx-doc.org/en/master/&quot;&gt;Sphinx&lt;/a&gt;. Sphinx is designed with Python documentation in mind and has an
+excellent, free hosting option in &lt;a href=&quot;https://readthedocs.org/&quot;&gt;ReadTheDocs&lt;/a&gt;. Sphinx does not support
+autodocumentation of C++ code out of the box but can use Doxygen as a bridge
+with the excellent &lt;a href=&quot;https://exhale.readthedocs.io/en/latest/&quot;&gt;Exhale&lt;/a&gt; tool. Exhale generates Doxygen XML as a part of
+the Sphinx build process and automatically documents C++ code for Sphinx as if
+it were natively supported Python docs.&lt;/p&gt;
+
+&lt;p&gt;Despite the complicated nature of Exhale’s relationship with Doxygen and Sphinx
+I was able to set it up very easily. I copied in the configuration details from
+the Exhale README to my Sphinx &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conf.py&lt;/code&gt; and started building my docs without
+messing with any Doxygen configuration. This also worked on the first attempt
+with ReadTheDocs which made the deployment process easy as well. I was mostly
+intending to use Sphinx/Exhale just because of my familiarity with Sphinx but I
+found it to be a remarkably easy documentation generation setup.&lt;/p&gt;
+
+&lt;p&gt;You can view the docs for Squiggles live at &lt;a href=&quot;https://squiggles.readthedocs.io&quot;&gt;ReadTheDocs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;python-dependency-management&quot;&gt;Python Dependency Management&lt;/h3&gt;
+
+&lt;p&gt;Dependency Management in Python is an unsolved problem in 2020. There are good
+tools out there for sure but the choice of which tool to use is far from clear.
+ReadTheDocs uses the traditional method of installing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip&lt;/code&gt; dependencies from a
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; file, so my Sphinx dependencies are kept there. For local
+development of the docs and visualization, however, I opted to go with
+&lt;a href=&quot;https://python-poetry.org/&quot;&gt;Poetry&lt;/a&gt;. Poetry is a much heavier tool but makes it easy to set up a
+virtual environment and use a different Python version than the system version.
+I’m running Pop!_OS 20.04 for my development machine and that release is in a
+weird limbo with system Python versions. Using Poetry was a bit of hassle given
+the duplication of dependencies with ReadTheDocs’ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; file but
+made it much easier to set up a clean development environment for me.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>GBoards Gergoplex Keyboard Review</title>
