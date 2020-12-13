@@ -164,13 +164,13 @@
 
 <p>The Gergoplex, like many other split, ergonomic keyboards, uses the wonderful <a href="https://docs.qmk.fm/#/">QMK</a> firmware. The default keymap for the Gergoplex isn’t <em>bad</em> by any means, but wasn’t what I was looking for. Though I took issue with some points of the HotDox’s design I was happy with <a href="https://github.com/baylessj/hotdox-qmk">my keymap for it</a>. Moving this keymap to the Gergoplex could not be done without a fair bit of rearranging given the reduction in the number of keys. My primary tool for fitting the required characters into the Gergoplex’s small footprint was QMK’s <a href="https://docs.qmk.fm/#/feature_layers">Layers</a>. I used two layers in my previous keymap, both activated by holding a dedicated key. The first layer simply turned the keys on the right hand side into arrow keys and home and end and such. The second layer turned the same group of keys into a numpad. These layers were a convenience; all of the above functionality was accessible through other keys outside of the easy-to-reach grid. The Gergoplex, on the other hand, <em>required</em> such layers in order to input all of the needed characters.</p>
 
-<p>I kept the arrow key and numpad portions of these layers as I had before. I had to rely on another one of QMK’s unique features to access these layers now though with the Gergoplex’s limited number of keys. I now access the arrow key layer by setting the “a” key as a “Layer-Toggle” QMK macro. When the “a” key is tapped it outputs an “a”, like normal, but when that key is held then it activates the arrow key layer. This macro makes it possible to keep the same layers as I had with a larger keyboard. The difference between a tap and a hold is not <em>that</em> much time, about a quarter of a second or so I think. This is a timing difference that I have mostly been able to get used to but was very difficult to work with when learning to type on the Gergoplex. Now that I’m close to a normal typing speed I don’t spend very long with my finger held on one of thes layer-toggle keys. These toggle keys seem to also struggle a bit with differences in the order that the pressed keys are released; I have to be careful to release the toggle key <em>after</em> any other key that I wish to be output as the layer version.</p>
+<p>I kept the arrow key and numpad portions of these layers as I had before. I had to rely on another one of QMK’s unique features to access these layers now though with the Gergoplex’s limited number of keys. I now access the arrow key layer by setting the “a” key as a “Layer-Tap” QMK macro. When the “a” key is tapped it outputs an “a”, like normal, but when that key is held then it activates the arrow key layer. This macro makes it possible to keep the same layers as I had with a larger keyboard. The difference between a tap and a hold is not <em>that</em> much time, about a quarter of a second or so I think. This is a timing difference that I have mostly been able to get used to but was very difficult to work with when learning to type on the Gergoplex. Now that I’m close to a normal typing speed I don’t spend very long with my finger held on one of thes layer-tap keys. These tap keys seem to also struggle a bit with differences in the order that the pressed keys are released; I have to be careful to release the tap key <em>after</em> any other key that I wish to be output as the layer version.</p>
 
-<p>I’m thinking it might be worth taking a look at changing some of the configuration options for these layer-toggle keys. I have put all of the modifier keys, those outside of the alphabet, on layers, so I’m using them very often. I don’t think I would rely on layers nearly as much if it weren’t for programming, which uses a lot of special characters. Part of me is considering adding an additional layer for just these special characters, but for now I am doing alright with adding them to the previously open keys on my arrow key and numpad layers.</p>
+<p>I’m thinking it might be worth taking a look at changing some of the configuration options for these layer-tap keys. I have put all of the modifier keys, those outside of the alphabet, on layers, so I’m using them very often. I don’t think I would rely on layers nearly as much if it weren’t for programming, which uses a lot of special characters. Part of me is considering adding an additional layer for just these special characters, but for now I am doing alright with adding them to the previously open keys on my arrow key and numpad layers.</p>
 
-<p>I have used an additional QMK macro to make up for the Gergoplex’s lack of modifier keys, the aptly named mod-toggle macro. This macro is very similar to the layer-toggle key but instead activates a modifier key like control or alt. These macro keys suffer from the same timing and release order issues that the layer-toggle keys do but are similarly getting more manageable as my typing speed increases.</p>
+<p>I have used an additional QMK macro to make up for the Gergoplex’s lack of modifier keys, the aptly named mod-tap macro. This macro is very similar to the layer-tap key but instead activates a modifier key like control or alt. These macro keys suffer from the same timing and release order issues that the layer-tap keys do but are similarly getting more manageable as my typing speed increases.</p>
 
-<p>One macro, of sorts, that is unique to the GBoards lineup of keyboards and their firmware is the key combo. The GBoards keyboards are either small, like the Gergoplex, or even smaller. It’s possible for the Gergoplex to be perfectly usable by just using layers and toggle keys, but it’s smaller cousings like the <a href="https://www.gboards.ca/product/georgi">Georgi</a> and <a href="https://www.gboards.ca/product/ginni">Ginny</a> require something closer to <a href="https://en.wikipedia.org/wiki/Shorthand">stenography</a>. This is where key combos come in. The combos also give keys multiple outputs like the toggle keys but are dependent on multiple keys being tapped at the same time. This allows, for example, “o” and “p” to work normally when pressed independently but output a “backspace” command when the two are tapped at the same time. I have only incorporated this technique into my keymap to replace the backspace key but I think I might try to start moving other characters from layers to combos like this in the future. I’ve found the key combos to be a bit more difficult to get used to conceptually compared to the toggle keys but I haven’t found hardly any issues with timing on the key combos.</p>
+<p>One macro, of sorts, that is used extensively on the GBoards lineup of keyboards is the key combo. The GBoards keyboards are either small, like the Gergoplex, or even smaller. It’s possible for the Gergoplex to be perfectly usable by just using layers and tap keys, but it’s smaller cousins like the <a href="https://www.gboards.ca/product/georgi">Georgi</a> and <a href="https://www.gboards.ca/product/ginni">Ginny</a> require something closer to <a href="https://en.wikipedia.org/wiki/Shorthand">stenography</a>. This is where key combos come in. The combos also give keys multiple outputs like the tap keys but are dependent on multiple keys being tapped at the same time. This allows, for example, “o” and “p” to work normally when pressed independently but output a “backspace” command when the two are tapped at the same time. I have only incorporated this technique into my keymap to replace the backspace key but I think I might try to start moving other characters from layers to combos like this in the future. I’ve found the key combos to be a bit more difficult to get used to conceptually compared to the tap keys but I haven’t found hardly any issues with timing on the key combos.</p>
 
 <p><img src="/assets/img/gergoplex3.jpg" sizes="`(min-width: 640px) 60vw, 90vw" srcset="/assets/img/360/gergoplex3.jpg 360w, /assets/img/480/gergoplex3.jpg 480w, /assets/img/640/gergoplex3.jpg 640w" alt="wide angle shot of both halves" /></p>
 
@@ -190,18 +190,18 @@
   <ul class="posts">
     
     <li>
+      <span>06 Dec 2020 &raquo;</span>
+      <a href="/2020/12/06/state-of-my-desk.html">State of My Desk 2020</a>
+    </li>
+    
+    <li>
+      <span>05 Nov 2020 &raquo;</span>
+      <a href="/2020/11/05/squiggles-cmake.html">Setting up a C++ library with CMake</a>
+    </li>
+    
+    <li>
       <span>19 Aug 2020 &raquo;</span>
       <a href="/2020/08/19/design-everyday-things.html">Book Review -- The Design of Everyday Things</a>
-    </li>
-    
-    <li>
-      <span>07 Aug 2020 &raquo;</span>
-      <a href="/2020/08/07/zettelkasten-foam.html">Zettelkasten Tooling Updates</a>
-    </li>
-    
-    <li>
-      <span>09 Jun 2020 &raquo;</span>
-      <a href="/2020/06/09/iris-handwire.html">Handwired Iris Keyboard Build</a>
     </li>
     
   </ul>
