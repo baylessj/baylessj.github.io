@@ -18,7 +18,7 @@ jobs:
             ${{ runner.os }}-gems-	
       - uses: IJustDev/jekyll-action@master
         env:
-          JEKYLL_PAT: ${{ secrets.PAT }}
+          JEKYLL_PAT: ${{ github.actor }}:${{ github.token }}
         with:
           target_branch: deploy
           custom_domain: jonathanbayless.com 
