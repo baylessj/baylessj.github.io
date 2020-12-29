@@ -4,13 +4,76 @@
  <title>The blog of Jonathan Bayless</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000"/>
- <updated>2020-12-08T20:59:34-05:00</updated>
+ <updated>2020-12-28T20:35:20-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jonathan Bayless</name>
    <email>me@jonathanbayless.com</email>
  </author>
 
+ 
+ <entry>
+   <title>The Price We Pay for FOSS</title>
+   <link href="http://localhost:4000/book-review/2020/12/28/bs-jobs.html"/>
+   <updated>2020-12-28T00:00:00-05:00</updated>
+   <id>http://localhost:4000/book-review/2020/12/28/bs-jobs</id>
+   <content type="html">&lt;p&gt;I’m writing this article following a read-through of David Graeber’s book, &lt;em&gt;Bullshit Jobs&lt;/em&gt;. &lt;em&gt;Bullshit Jobs&lt;/em&gt; is a look at the causes and effects of jobs that seem to serve no functional purpose. One of Graeber’s examples of the impact of these Bullshit jobs was in software development. Graeber did not exhaustively cover the subject, nor should he have here, but I felt like the topic deserved more discussion.&lt;/p&gt;
+
+&lt;p&gt;I am a big proponent of Free Open-Source Software, or FOSS. I’m one of the people that use Linux wherever possible and my &lt;a href=&quot;https://github.com/baylessj&quot;&gt;Github contributions graph&lt;/a&gt; is lit up like a Christmas tree. I enjoy creating open-source software. This is not to say that I believe FOSS is always a better choice than proprietary software, but I’ll try to advocate for it often. &lt;em&gt;Bullshit Jobs&lt;/em&gt; shifted my perspective to see more of the pain brought upon software development by FOSS. Like the old Economics saying goes – “There is no such thing as a free lunch” – there is no such thing as a &lt;strong&gt;free&lt;/strong&gt; piece of software.&lt;/p&gt;
+
+&lt;h2 id=&quot;bullshit-jobs-a-theory&quot;&gt;Bullshit Jobs: A Theory&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/bs_jobs.jpeg&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/bs_jobs.jpeg 360w, /assets/img/480/bs_jobs.jpeg 480w, /assets/img/640/bs_jobs.jpeg 640w&quot; alt=&quot;Bullsh*t Jobs Book Cover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The book lays out a journey from the business environment that creates these jobs to the effect of these jobs on the workers and finally to a recommendation on changing the business environment from the start. This environment is explained as self-perpetuating; the prevalence of bullshit jobs results in the creation of even more bullshit jobs. It is a fundamental human desire to create, to have an &lt;em&gt;impact&lt;/em&gt; on the world. Jobs with this kind of real impact have been pushed aside by Bullshit Jobs.&lt;/p&gt;
+
+&lt;p&gt;Graeber asserts that &lt;strong&gt;half&lt;/strong&gt; of all jobs are considered “Bullshit” by his definition. He then divides this half into five types of roles - Flunkies, Goons, Duct Tapers, Box Tickers, and Taskmasters. Those of us whose titles are roughly “Software Engineer” fall into the “Duct Taper” category. We Duct Tapers are responsible for bridging the gaps between &lt;strong&gt;impactful&lt;/strong&gt; components with temporary and feeble solutions. The Software Engineers are joined by Support Staff in this category; Airline Desk Staff reassuring passengers whose bags did not arrive are similarly fixing a gap in the system with a temporary solution.&lt;/p&gt;
+
+&lt;p&gt;children play games and create imaginary worlds to fulfill a fundamental need to have influence on the world/surroundings TODO&lt;/p&gt;
+
+&lt;h2 id=&quot;the-impact-of-foss-on-job-responsibilities&quot;&gt;The impact of FOSS on job responsibilities&lt;/h2&gt;
+
+&lt;p&gt;An important distinction to make between Graeber’s two examples of Duct Tapers is that Software Engineers may hold part of the blame for the pointlessness of their work. The Airline Desk Staff do not have any direct impact on the airline’s ability to get bags from one location to another. That fault lies with the operation of the airline rather than anything done by the Airline Desk Staff. Software Engineers, on the other hand, are not duct taping systems created by workers of a completely different type. We are, instead, typically taping together pieces of FOSS. &amp;lt;- TODO: Finish this thought&lt;/p&gt;
+
+&lt;p&gt;59% of Software Developers contribute to Open Source software in some manner &lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;Standing on the shoulders of giants – related? Marx pointed out that the idea of optimizing for creating overall societal wealth is new as of the industrial revolution, prior to this it was about creating great people (see Aristotle and such)&lt;/p&gt;
+
+&lt;p&gt;The proliferation of B.S. jobs has made it so that it is often unrealistic to expect to be paid to do interesting work. This is one (of many) factors that has pushed the interesting tasks for software development to FOSS developers. FOSS developers will work on interesting tasks for free outside of work to combat the lack of mental stimulation from their BS jobs. That FOSS software is used by their company and others to provide the components that “duct-taper” software engineers will drudgingly string together to make products. This is a vicious cycle that makes itself more prevalent over time.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-paradox-of-modern-work&quot;&gt;The Paradox of Modern Work&lt;/h2&gt;
+
+&lt;p&gt;Most people’s sense of dignity and self-worth is caught up in working for a living, but they hate their jobs. &amp;lt;- This is overstated by Graeber IMO&lt;/p&gt;
+
+&lt;p&gt;Pain from work justifies consumerism and consumerism becomes more trivial and materialistic to fit the small time slots in the day left after work&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Notes:&lt;/p&gt;
+
+&lt;p&gt;A lottt more effort is placed on financial machinations rather than actually creating things or providing real services. For example, GM makes more money from car loan finances than making cars&lt;/p&gt;
+
+&lt;p&gt;wtfhappenedin1971.com – there was a “Keynesian agreement” prior to 1971 where increases in worker productity (and profits as a result) then caused an increase in worker pay. The top 1% has become closer to a ruling class while the pay for hourly workers has stayed level.&lt;/p&gt;
+
+&lt;p&gt;Schools are increasingly being designed to prepare people for future jobs, and the end-result of this line of thinking is that all education and mother’s love and such are just to keep the labor pool going.&lt;/p&gt;
+
+&lt;p&gt;“If you spend your working life caring for others, then you will end up so underpaid and deeply in debt that you won’t be able to care for your own family”.&lt;/p&gt;
+
+&lt;p&gt;UBI is almost certainly outside the scope of this article&lt;/p&gt;
+
+&lt;p&gt;the value of labor cannot be properly quantified, trying to relate income to value provided is impossible&lt;/p&gt;
+
+&lt;p&gt;The current state of affairs with a managerial class is perpetuated by the fact that political leaders are naturally part of that group and are becoming increasingly friendly with the financial sector that enables their success in reelection&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://s3-eu-west-1.amazonaws.com/vm-blog/uploads/2020/04/DE18-SoN-Digital-.pdf&quot;&gt;SlashData’s Q4 2019 State of the Developer Nation&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>State of My Desk 2020</title>
