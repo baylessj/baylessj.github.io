@@ -4,7 +4,7 @@
  <title>The blog of Jonathan Bayless</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000"/>
- <updated>2021-01-30T20:39:21-05:00</updated>
+ <updated>2021-01-31T10:31:42-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jonathan Bayless</name>
@@ -143,7 +143,12 @@ loaded.&lt;/p&gt;
 &lt;p&gt;We then call the promises defined by our wrapper in an async function in the GUI
 code.&lt;/p&gt;
 
-&lt;p&gt;Credit to opencv-js-webworker repo&lt;/p&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;You can find the source for this code in my &lt;a href=&quot;https://github.com/baylessj/robotsquiggles/tree/main/web&quot;&gt;Squiggles repo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Huge shoutout to Vinissimus for their &lt;a href=&quot;https://github.com/vinissimus/opencv-js-webworker&quot;&gt;OpenCV-JS-WebWorker example&lt;/a&gt;,
+it was a big help for figuring out the WebWorker integration with WASM.&lt;/p&gt;
 </content>
  </entry>
  

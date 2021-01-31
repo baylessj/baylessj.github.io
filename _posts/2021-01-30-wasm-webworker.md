@@ -142,4 +142,9 @@ const val = await squiggles.test();
 We then call the promises defined by our wrapper in an async function in the GUI
 code.
 
-Credit to opencv-js-webworker repo
+## References
+
+You can find the source for this code in my [Squiggles repo](https://github.com/baylessj/robotsquiggles/tree/main/web).
+
+Huge shoutout to Vinissimus for their [OpenCV-JS-WebWorker example](https://github.com/vinissimus/opencv-js-webworker),
+it was a big help for figuring out the WebWorker integration with WASM.
