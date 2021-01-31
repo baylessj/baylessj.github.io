@@ -4,7 +4,7 @@ tags: [gadgets]
 title: State of My Desk 2020
 image:
   - src: desk2020.jpg
-  - alt: "A Picture of My Desk"
+    alt: "A Picture of My Desk"
 ---
 
 {% assign image = page.image[0] %}

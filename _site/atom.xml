@@ -4,7 +4,7 @@
  <title>The blog of Jonathan Bayless</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000"/>
- <updated>2020-12-08T20:59:34-05:00</updated>
+ <updated>2021-01-30T20:39:21-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jonathan Bayless</name>
@@ -13,12 +13,147 @@
 
  
  <entry>
+   <title>C++ in the Background of React with WebAssembly and WebWorkers</title>
+   <link href="http://localhost:4000/2021/01/30/wasm-webworker.html"/>
+   <updated>2021-01-30T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2021/01/30/wasm-webworker</id>
+   <content type="html">&lt;p&gt;My side project of choice at the moment is &lt;a href=&quot;https://github.com/baylessj/robotsquiggles&quot;&gt;Squiggles&lt;/a&gt;.
+Squiggles is a library that makes it easy to create bezier curve paths, or “Squiggles”,
+for robots. I wrote the library in C++.&lt;/p&gt;
+
+&lt;p&gt;After completing the initial development of the core library I started development
+of a web-based GUI for drawing out these paths. My goal for this GUI is to provide
+an easier way to prototype paths by both overlaying the paths on the robot’s
+field and generating the paths to confirm that they are possible. The second part
+requires running the C++ code based on input from the user in the browser. C++
+does not natively run client-side so we need to compile the C++ to a format the
+browser can use. This is where &lt;a href=&quot;https://webassembly.org/&quot;&gt;WebAssembly&lt;/a&gt; comes in.&lt;/p&gt;
+
+&lt;h2 id=&quot;webassembly&quot;&gt;WebAssembly&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/wasm.webp&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/wasm.webp 360w, /assets/img/480/wasm.webp 480w, /assets/img/640/wasm.webp 640w&quot; alt=&quot;WebAssembly Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;WebAssembly is a relatively new technology that allows compiled code to run in
+the browser. The WebAssembly itself is stored as a long string of hex. Most
+WebAssembly compilers, including &lt;a href=&quot;https://emscripten.org/&quot;&gt;Emscripten&lt;/a&gt; like I’m using, also generate a
+Javascript file that aids in loading the compiled code.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/emscripten.png&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/emscripten.png 360w, /assets/img/480/emscripten.png 480w, /assets/img/640/emscripten.png 640w&quot; alt=&quot;Emscripten Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I used Emscripten to compile the Squiggles C++ code to WebAssembly and a Javascript
+file. Emscripten is a very powerful tool and, as a result, takes a bit of
+configuration to get working just right for this use case.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;emcc &lt;span class=&quot;nv&quot;&gt;$SRCS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;WASM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;MODULARIZE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;EXTRA_EXPORTED_RUNTIME_METHODS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[\&quot;ccall\&quot;, \&quot;cwrap\&quot;]'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;EXPORT_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'squiggles'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;SINGLE_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt; main/include &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;--std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;gnu++17 &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; squiggles.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The snippet above is the script I run to build the Squiggles WebAssembly.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-s WASM=1&lt;/code&gt; This flag specifies that we want emcc to output WebAssembly.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-s MODULARIZE=1&lt;/code&gt; This flag exports the generated Javascript as a named module.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-s EXTRA_EXPORTED_RUNTIME_METHODS='[\&quot;ccall\&quot;, \&quot;cwrap\&quot;]'&lt;/code&gt; This flag makes &lt;a href=&quot;https://emscripten.org/docs/porting/connecting_cpp_and_javascript/Interacting-with-code.html#interacting-with-code-ccall-cwrap&quot;&gt;these&lt;/a&gt; functions available in the generated Javascript.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-s EXPORT_NAME=\&quot;'squiggles'\&quot;&lt;/code&gt; This flag names our generated module “Squiggles”.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-s SINGLE_FILE=1&lt;/code&gt; This flag tells emcc to put the WebAssembly in the generated Javascript rather than in a standalone file.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-I main/include&lt;/code&gt; This is the path to the C++ code’s include directory.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;TODO add a section about the shim code&lt;/p&gt;
+
+&lt;h2 id=&quot;webworker&quot;&gt;WebWorker&lt;/h2&gt;
+
+&lt;p&gt;Generating paths with Squiggles takes a decent bit of time, at least in terms of
+UI responsiveness. We don’t want to run the generation directly from the main
+Javascript app because it would block the user from doing anything in the meantime.
+The solution for this is the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers&quot;&gt;WebWorker&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We will use the WebWorker to asynchronously load the WebAssembly and run the
+generation. Our UI interacts with the worker by passing messages. Let’s look at
+the “load” message as an example.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * This exists to capture all the events that are thrown out of the worker
+ * into the worker. Without this, there would be no communication possible
+ * with our project.
+ */&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;onmessage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// Import Webassembly script&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;importScripts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./squiggles.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;waitForWasm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Error on loading Squiggles lib&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Above our worker will, after getting the “load” message, import the WebAssembly
+file and then wait on the browser to make its functions callable (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;waitForWasm&lt;/code&gt;).
+When this process is complete and Squiggles is ready we send a message back to
+the UI.&lt;/p&gt;
+
+&lt;p&gt;Once we’ve loaded the WebAssembly we can use this same message API to call
+Squiggles’ path generation.&lt;/p&gt;
+
+&lt;h2 id=&quot;react-integration&quot;&gt;React Integration&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/react.png&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/react.png 360w, /assets/img/480/react.png 480w, /assets/img/640/react.png 640w&quot; alt=&quot;React Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ordinarily we could just stick the generated WebAssembly/JS and WebWorker in the
+site’s static assets and be good to go. I’m using &lt;a href=&quot;https://reactjs.org/&quot;&gt;React&lt;/a&gt;, though, which adds
+a bit more complexity. We’ll create a wrapper class in the React app to interact
+with the WebWorker.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;worker&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Worker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;robotsquiggles/js/squiggles.worker.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// load worker&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Capture events and save [status, event] inside the _status object&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onmessage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onerror&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above function creates the worker and sets up the message passing. We’ll
+call this first and then use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;this.worker.postMessage&lt;/code&gt; to use the worker.&lt;/p&gt;
+
+&lt;p&gt;The code above took me a while to troubleshoot. I kept trying to access the
+worker file at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/js/squiggles.worker.js&lt;/code&gt; since that is the file’s location
+relative to the root of the project. This would get me an error about an incorrect
+“MIME” type of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text/html&lt;/code&gt;. React was automatically prepending the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;robotsquiggles&lt;/code&gt;
+value from the project’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;homepage&lt;/code&gt; value in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt;, and when it couldn’t
+find a file at the requested location, returned the contents of index.html.
+Getting the path to the javascript file right was all it took to get the file
+loaded.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;squiggles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;squiggles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We then call the promises defined by our wrapper in an async function in the GUI
+code.&lt;/p&gt;
+
+&lt;p&gt;Credit to opencv-js-webworker repo&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>State of My Desk 2020</title>
    <link href="http://localhost:4000/2020/12/06/state-of-my-desk.html"/>
    <updated>2020-12-06T00:00:00-05:00</updated>
    <id>http://localhost:4000/2020/12/06/state-of-my-desk</id>
    <content type="html">
-&lt;p&gt;&lt;img src=&quot;/assets/img/desk2020.jpg&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/desk2020.jpg 360w, /assets/img/480/desk2020.jpg 480w, /assets/img/640/desk2020.jpg 640w&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/desk2020.jpg&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/desk2020.jpg 360w, /assets/img/480/desk2020.jpg 480w, /assets/img/640/desk2020.jpg 640w&quot; alt=&quot;A Picture of My Desk&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The set of hardware on my desk has changed pretty dramatically this year. I’ll attribute a decent part of that change to COVID-19 and working from home for most of this year; I’ve had to care a lot more about my working space as a result. I’m putting together this post as a way of reviewing the hardware I’m using and to capture this point in history of my working space, as I anticipate that it will continue to change in the coming year.&lt;/p&gt;
 
