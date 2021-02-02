@@ -3,14 +3,17 @@
   languages:
     - devicon-cplusplus-plain
     - devicon-python-plain
+    - devicon-react-plain
   website: https://squiggles.readthedocs.io
   github: https://github.com/baylessj/robotsquiggles
 - name: auToDo
   description: A flexible, intuitive ToDo list app for keeping track of your cars' maintenance needs.
   languages:
-    - devicon-google-plain
-    - devicon-apple-plain
-    - devicon-android-plain
+    - devicon-flutter-plain
+    - devicon-python-plain
+    - devicon-react-plain
+    - devicon-redux-plain
+    - devicon-typescript-plain
   website: https://autodo.app
   github: https://github.com/autodo-app/autodo
 - name: VEX Robotics

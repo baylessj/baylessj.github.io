@@ -284,6 +284,13 @@ sup {
   margin-top: 0.5em;
   margin-bottom: 0.5em; }
 
+.project-links a {
+  font-size: 18px; }
+
+.projects i {
+  font-size: 20px;
+  padding: 0.1em; }
+
 .projects hr {
   border: 0.5px dashed #4c566a;
   margin-top: 1em;
