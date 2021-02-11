@@ -4,13 +4,52 @@
  <title>The blog of Jonathan Bayless</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000"/>
- <updated>2021-02-01T19:47:54-05:00</updated>
+ <updated>2021-02-10T19:36:25-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jonathan Bayless</name>
    <email>me@jonathanbayless.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Book Review -- Rework</title>
+   <link href="http://localhost:4000/2021/02/08/rework.html"/>
+   <updated>2021-02-08T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2021/02/08/rework</id>
+   <content type="html">
+&lt;p&gt;&lt;img src=&quot;/assets/img/rework.jpg&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/rework.jpg 360w, /assets/img/480/rework.jpg 480w, /assets/img/640/rework.jpg 640w&quot; alt=&quot;Rework cover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Rework is a collection of helpful tips for building successful businesses and projects. It’s a brisk read but I found it to be full of helpful info and I’ve collected my takeaways here.&lt;/p&gt;
+
+&lt;h2 id=&quot;running-projects&quot;&gt;Running Projects&lt;/h2&gt;
+
+&lt;p&gt;Fried recommends early in the book to not turn guesses into plans. Plans let the past drive the future and prevent flexibility.&lt;/p&gt;
+
+&lt;p&gt;I liked the section about how long projects zap morale. The longer it takes to develop the less likely it is to launch. It’s best to break big projects into little projects and then go one step at a time.&lt;/p&gt;
+
+&lt;p&gt;Fried did make a point along these lines that I disagree with. He argues that decisions should not, typically, be postponed in the interest of making a better decision. This opposes the Agile/LEAN principle of the “Last Responsible Moment”, making decisions right before it’s absolutely needed. Waiting to make a decision, in larger companies at least, &lt;em&gt;will&lt;/em&gt; improve the likelihood of making a good decision.&lt;/p&gt;
+
+&lt;h2 id=&quot;keeping-the-business-small&quot;&gt;Keeping the Business Small&lt;/h2&gt;
+
+&lt;p&gt;The biggest takeaway here is that small is a fine destination for a business. Lots of big companies strive to act like they’re small again but it’s way harder to shrink a company than it is to grow it. Hiring a lot of people quickly will make it so that no one challenges ideas and instead just appeases. Along these lines, if you are a consumer business, it’s alright if customers outgrow your product.&lt;/p&gt;
+
+&lt;h2 id=&quot;build-the-right-products&quot;&gt;Build the Right Product(s)&lt;/h2&gt;
+
+&lt;p&gt;A number of good points here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Be a curator – pare things down to only what is essential&lt;/li&gt;
+  &lt;li&gt;Don’t care about beating the big player in your industry, do your own thing&lt;/li&gt;
+  &lt;li&gt;Only implement the requests you hear over and over from customers&lt;/li&gt;
+  &lt;li&gt;Advertise by teaching relevant skills to your product, write a “cookbook” equivalent for your teaching&lt;/li&gt;
+  &lt;li&gt;Get to a great product by cutting out what is merely good.&lt;/li&gt;
+  &lt;li&gt;Figure out what the epicenter of the business is – if I stop selling this thing, will I cease to have a business?&lt;/li&gt;
+  &lt;li&gt;If all you do is work your decisions will end up skewed and you won’t be able to determine well what is and isn’t worth time.&lt;/li&gt;
+  &lt;li&gt;If no one is upset by your opinions then you aren’t pushing hard enough or you’re just boring&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>C++ in the Background of React with WebAssembly and WebWorkers</title>
