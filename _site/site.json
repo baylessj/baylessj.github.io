@@ -8,25 +8,25 @@
 
 {"date": "Sat, 30 Jan 2021 00:00:00 -0500",
 "categories": [],
-"tags": ["software"],
+"tags": ["programming","cpp"],
 "title": "C++ in the Background of React with WebAssembly and WebWorkers",
 "url": "/2021/01/30/wasm-webworker.html"},
 
 {"date": "Sun, 06 Dec 2020 00:00:00 -0500",
 "categories": [],
-"tags": ["gadgets"],
+"tags": ["productivity"],
 "title": "State of My Desk 2020",
 "url": "/2020/12/06/state-of-my-desk.html"},
 
 {"date": "Thu, 05 Nov 2020 00:00:00 -0500",
 "categories": [],
-"tags": ["software"],
+"tags": ["programming","cpp"],
 "title": "Setting up a C++ library with CMake",
 "url": "/2020/11/05/squiggles-cmake.html"},
 
 {"date": "Wed, 07 Oct 2020 00:00:00 -0400",
 "categories": [],
-"tags": ["keyboards"],
+"tags": ["productivity","keyboards"],
 "title": "GBoards Gergoplex Keyboard Review",
 "url": "/2020/10/07/gergoplex-review.html"},
 
@@ -50,21 +50,21 @@
 
 {"date": "Sun, 03 May 2020 00:00:00 -0400",
 "categories": [],
-"tags": ["bugfix"],
+"tags": ["productivity","bugfix"],
 "title": "Fixing a soft-bricked Logitech Receiver with fwupdmgr",
 "url": "/2020/05/03/bricked-mx-master-receiver.html"},
 
 {"date": "Mon, 09 Mar 2020 00:00:00 -0400",
 "categories": [],
-"tags": [],
+"tags": ["productivity"],
 "title": "Vimwiki + Zettelkasten -- Note Taking Nirvana",
 "url": "/2020/03/09/zettelkasten-vimwiki.html"},
 
 {"date": "Fri, 28 Feb 2020 00:00:00 -0500",
-"categories": ["blog"],
-"tags": [],
+"categories": [],
+"tags": ["book-review"],
 "title": "Code Ahead - A Painful Read That Makes Some Valid Points",
-"url": "/blog/2020/02/28/code-ahead.html"},
+"url": "/2020/02/28/code-ahead.html"},
 
 {"date": "Sat, 08 Feb 2020 00:00:00 -0500",
 "categories": [],
@@ -85,9 +85,9 @@
 "url": "/2019/08/07/flutter-firebase-gradle.html"},
 
 {"date": "Sun, 16 Jun 2019 00:00:00 -0400",
-"categories": ["blog"],
+"categories": [],
 "tags": [],
 "title": "Hello World",
-"url": "/blog/2019/06/16/helloworld.html"},
+"url": "/2019/06/16/helloworld.html"},
 
 false]

@@ -4,7 +4,7 @@
  <title>The blog of Jonathan Bayless</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000"/>
- <updated>2021-02-10T19:36:25-05:00</updated>
+ <updated>2021-02-10T19:59:19-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jonathan Bayless</name>
@@ -579,7 +579,6 @@ made it much easier to set up a clean development environment for me.&lt;/p&gt;
 &lt;p&gt;Once again, I found a new option for my Zettelkasten through a Hacker News post. This time the tool was a very similar alternative to Dendron, a set of Visual Studio Code plugins called &lt;a href=&quot;https://foambubble.github.io&quot;&gt;Foam&lt;/a&gt;. Foam covered a similar feature set as Obsidian and Dendron with the addition of a Jekyll/Github Pages integration. I hope to, at some point, clean up my Zettelkasten and get it added to my personal site here since it can be added to a Jekyll site. Foam didn’t add much other new functionality besides that, but so far Foam has been able to reliably handle my ever-growing Zettelkasten with no crashes or major bugs. The link autocompletion is &lt;em&gt;excellent&lt;/em&gt; so I am able to write links to other documents without the cognitive overload of trying to remember their Zettelkasten identifiers. The graph view isn’t quite as nice as Obsidian’s but it does the trick, showing me what notes have proper links and which ones need some attention.&lt;/p&gt;
 
 &lt;p&gt;Overall, I’m very happy with Foam. The other tools I tested along the way were suitable but I’ve found a great fit for my workflow in Foam. I’ll be sure to report back with a follow-up blog post again as my notes grow further, hopefully I’ll be able to report that Foam still fits my needs.&lt;/p&gt;
-
 </content>
  </entry>
  
@@ -812,7 +811,7 @@ that I was used to on the Hot Dox.&lt;/p&gt;
    <link href="http://localhost:4000/2020/05/03/bricked-mx-master-receiver.html"/>
    <updated>2020-05-03T00:00:00-04:00</updated>
    <id>http://localhost:4000/2020/05/03/bricked-mx-master-receiver</id>
-   <content type="html">&lt;p&gt;I was very excited for the 20.04 LTS release of &lt;a href=&quot;&quot;&gt;Pop!_OS&lt;/a&gt; that came out a few
+   <content type="html">&lt;p&gt;I was very excited for the 20.04 LTS release of &lt;a href=&quot;https://pop.system76.com/&quot;&gt;Pop!_OS&lt;/a&gt; that came out a few
 days ago. The addition of automatic window tiling and the various GNOME improvements
 that came with the update were well worth the move from 19.10. After a few days
 of using the update I still stand by my opinion that the upgrade was worthwhile,
@@ -822,19 +821,19 @@ but it wasn’t an easy transition.&lt;/p&gt;
 of my computer’s hard-drives in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/fstab&lt;/code&gt; – but that’s understandable given
 that there’s three drives and a mix on windows partitions on the non-boot ones.
 A fresh install took care of that issue, and all of the drives are accessible
-and running fine now. I did not, however, expect that my &lt;a href=&quot;&quot;&gt;Logitech MX MAster 2S&lt;/a&gt;
+and running fine now. I did not, however, expect that my &lt;a href=&quot;https://www.logitech.com/en-ph/product/mx-master-2s-flow&quot;&gt;Logitech MX Master 2S&lt;/a&gt;
 mouse would fall victim to the upgrade process.&lt;/p&gt;
 
 &lt;p&gt;Somewhere along the way in the fresh install of Pop!_OS 20.04, the firmware update
 manager utility decided to run. This utility decided that the firmware for the
 Logitech Unifying Receiver, the USB dongle for the mouse, needed updating. That
 would have been fine, except the update encountered an “unexpected error” and cut
-out half-way through the update. This left the mouse dongle unusable and the 
+out half-way through the update. This left the mouse dongle unusable and the
 mouse refused to connect to it.&lt;/p&gt;
 
 &lt;p&gt;A quick check of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsusb | grep Logitech&lt;/code&gt; gave me &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bus 003 Device 005: ID 046d:aaac Logitech, Inc. USB BootLoader&lt;/code&gt; where the dongle was plugged in. This was good news in that the dongle
-was still communicating over USB and was not hard-bricked, but it clearly isn’t 
-supposed to be a “BootLoader” device. The Pop!_OS firmware upgrade utility in 
+was still communicating over USB and was not hard-bricked, but it clearly isn’t
+supposed to be a “BootLoader” device. The Pop!_OS firmware upgrade utility in
 the Settings menu didn’t show that the device was eligible for an upgrade, but I
 assumed that somehow forcing an update would improve the situation. Thankfully I
 was introduced to the command line version of the update tool from a Stack Overflow
@@ -919,33 +918,31 @@ tech stack.&lt;/p&gt;
  
  <entry>
    <title>Code Ahead - A Painful Read That Makes Some Valid Points</title>
-   <link href="http://localhost:4000/blog/2020/02/28/code-ahead.html"/>
+   <link href="http://localhost:4000/2020/02/28/code-ahead.html"/>
    <updated>2020-02-28T00:00:00-05:00</updated>
-   <id>http://localhost:4000/blog/2020/02/28/code-ahead</id>
+   <id>http://localhost:4000/2020/02/28/code-ahead</id>
    <content type="html">
 &lt;p&gt;&lt;img src=&quot;/assets/img/codeahead.png&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/codeahead.png 360w, /assets/img/480/codeahead.png 480w, /assets/img/640/codeahead.png 640w&quot; alt=&quot;Code Ahead Book Cover&quot; /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;code-ahead---a-painful-read-that-makes-some-valid-points&quot;&gt;Code Ahead - A Painful Read That Makes Some Valid Points&lt;/h1&gt;
-
-&lt;p&gt;I really don’t like Yegor Bugayenko. The author of Code Ahead, a semi-autobiographical take on software engineering, comes across a condescending and annoying. The book’s protagonist is clearly modeled after the author, and  he sucks. The protagonist plays a know-it-all, a nihilist, and a caricature of  the author’s ideas. This creates a perfect storm of behavior that led to my  hatred of the character.&lt;/p&gt;
+&lt;p&gt;I really don’t like Yegor Bugayenko. The author of Code Ahead, a semi-autobiographical take on software engineering, comes across a condescending and annoying. The book’s protagonist is clearly modeled after the author, and he sucks. The protagonist plays a know-it-all, a nihilist, and a caricature of the author’s ideas. This creates a perfect storm of behavior that led to my hatred of the character.&lt;/p&gt;
 
 &lt;p&gt;That said, the book makes some good points.&lt;/p&gt;
 
 &lt;h2 id=&quot;tracking-performance&quot;&gt;Tracking Performance&lt;/h2&gt;
 
-&lt;p&gt;A recurring theme in Code Ahead is performance tracking. Management rightfully wants a reliable metric for a programmer’s productivity, but that is not an easy ask. The protagonist argues for using closed tickets for tracking productivity. I agree with the core idea of this method. I do not, however, agree with the author’s hypothetical scenario where programmers are paid as a function of their closed tickets. This payment structure is one of the many examples of  the author’s cold, simplistic view on software development.&lt;/p&gt;
+&lt;p&gt;A recurring theme in Code Ahead is performance tracking. Management rightfully wants a reliable metric for a programmer’s productivity, but that is not an easy ask. The protagonist argues for using closed tickets for tracking productivity. I agree with the core idea of this method. I do not, however, agree with the author’s hypothetical scenario where programmers are paid as a function of their closed tickets. This payment structure is one of the many examples of the author’s cold, simplistic view on software development.&lt;/p&gt;
 
-&lt;p&gt;There is an interesting discussion between the book’s characters on whether this method of tracking performance is &lt;em&gt;agile&lt;/em&gt;. It is another process, after all, and it introduces a risk of the team’s programmer’s becoming feature factories. This is another reason that I do not agree with the author’s suggestion to pay developers by their number of completed tickets; pushing one metric too hard will inevitably lead to the team becoming one dimensional in pursuit of the  metric.&lt;/p&gt;
+&lt;p&gt;There is an interesting discussion between the book’s characters on whether this method of tracking performance is &lt;em&gt;agile&lt;/em&gt;. It is another process, after all, and it introduces a risk of the team’s programmer’s becoming feature factories. This is another reason that I do not agree with the author’s suggestion to pay developers by their number of completed tickets; pushing one metric too hard will inevitably lead to the team becoming one dimensional in pursuit of the metric.&lt;/p&gt;
 
-&lt;p&gt;The QA team in Code Ahead has a metric that is roughly the opposite of the developers’ metric – tickets opened. This is the opposite of the conventional team structure, but I am of the opinion that it is the correct approach. The QA team should be rewarded for finding defects in their testing. It is cheaper and faster to  fix bugs found before they reach the customer. Additionally, the QA team would have no tangible effect on the organization if their tests are always passing.&lt;/p&gt;
+&lt;p&gt;The QA team in Code Ahead has a metric that is roughly the opposite of the developers’ metric – tickets opened. This is the opposite of the conventional team structure, but I am of the opinion that it is the correct approach. The QA team should be rewarded for finding defects in their testing. It is cheaper and faster to fix bugs found before they reach the customer. Additionally, the QA team would have no tangible effect on the organization if their tests are always passing.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-definition-of-done&quot;&gt;The Definition of “Done”&lt;/h2&gt;
 
-&lt;p&gt;A related question to the decision of what metric to track is the decision of  when to consider a ticket complete. This definition of “done” varies between  teams and is often the source of a lot of bugs and team conflicts. The  protagonist in Code Ahead rightly points out that this definition should be  very clearly understood by the team and its stakeholders. His recommended approach for making this clear to the team is to have the team decide on their definition as a group. I think this would be appropriate most of the team, but if a team has a lot of stakeholders with complex requirements then the average developer may not be able to make an informed opinion on what must constitute as “done”.&lt;/p&gt;
+&lt;p&gt;A related question to the decision of what metric to track is the decision of when to consider a ticket complete. This definition of “done” varies between teams and is often the source of a lot of bugs and team conflicts. The protagonist in Code Ahead rightly points out that this definition should be very clearly understood by the team and its stakeholders. His recommended approach for making this clear to the team is to have the team decide on their definition as a group. I think this would be appropriate most of the team, but if a team has a lot of stakeholders with complex requirements then the average developer may not be able to make an informed opinion on what must constitute as “done”.&lt;/p&gt;
 
 &lt;h2 id=&quot;bugayenko-the-egoist&quot;&gt;Bugayenko the Egoist&lt;/h2&gt;
 
-&lt;p&gt;The primary reason for my dislike of Bugayenko is his character’s Egoistic attitude. The beginning suggests to get a role where you can wield power over your coworkers without holding any real responsibility. The protagonist is playing “poker with Tony for a place in the hierarchy” while taking a software architect role for the supposed lack of responsibility with the position. Bugayenko says that his  goal with his role is to work exclusively on his own open-source projects while receiving a paycheck, bending his coworkers to his ideals, and incessantly  quoting Nietzche throughout. Seriously, the guy needs to stop with the appeals to Nietzche and other philosophers.&lt;/p&gt;
+&lt;p&gt;The primary reason for my dislike of Bugayenko is his character’s Egoistic attitude. The beginning suggests to get a role where you can wield power over your coworkers without holding any real responsibility. The protagonist is playing “poker with Tony for a place in the hierarchy” while taking a software architect role for the supposed lack of responsibility with the position. Bugayenko says that his goal with his role is to work exclusively on his own open-source projects while receiving a paycheck, bending his coworkers to his ideals, and incessantly quoting Nietzche throughout. Seriously, the guy needs to stop with the appeals to Nietzche and other philosophers.&lt;/p&gt;
 
 &lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
 
@@ -1252,9 +1249,9 @@ apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle p
  
  <entry>
    <title>Hello World</title>
-   <link href="http://localhost:4000/blog/2019/06/16/helloworld.html"/>
+   <link href="http://localhost:4000/2019/06/16/helloworld.html"/>
    <updated>2019-06-16T00:00:00-04:00</updated>
-   <id>http://localhost:4000/blog/2019/06/16/helloworld</id>
+   <id>http://localhost:4000/2019/06/16/helloworld</id>
    <content type="html">&lt;p&gt;I’m a big fan of side-projects and I’ve run a &lt;a href=&quot;https://pages.github.com/&quot;&gt;Github Pages&lt;/a&gt;
 site as my personal site for a while now, so it seemed inevitable that I would take
 advantage of its blogging capabilities at some point.&lt;/p&gt;

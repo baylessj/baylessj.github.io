@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [software]
+tags: [programming, cpp]
 title: C++ in the Background of React with WebAssembly and WebWorkers
 image:
   - src: wasm.webp

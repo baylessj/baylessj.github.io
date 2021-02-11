@@ -1,6 +1,6 @@
 ---
 layout: post
-tages: [productivity]
+tags: [productivity]
 title: Vimwiki + Zettelkasten -- Note Taking Nirvana
 hn-id: 22637482
 ---

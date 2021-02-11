@@ -133,7 +133,7 @@
 
 <h1 class="title">Fixing a soft-bricked Logitech Receiver with fwupdmgr</h1>
 
-<div id="post"><p>I was very excited for the 20.04 LTS release of <a href="">Pop!_OS</a> that came out a few
+<div id="post"><p>I was very excited for the 20.04 LTS release of <a href="https://pop.system76.com/">Pop!_OS</a> that came out a few
 days ago. The addition of automatic window tiling and the various GNOME improvements
 that came with the update were well worth the move from 19.10. After a few days
 of using the update I still stand by my opinion that the upgrade was worthwhile,
@@ -143,19 +143,19 @@ but it wasn’t an easy transition.</p>
 of my computer’s hard-drives in <code class="language-plaintext highlighter-rouge">/etc/fstab</code> – but that’s understandable given
 that there’s three drives and a mix on windows partitions on the non-boot ones.
 A fresh install took care of that issue, and all of the drives are accessible
-and running fine now. I did not, however, expect that my <a href="">Logitech MX MAster 2S</a>
+and running fine now. I did not, however, expect that my <a href="https://www.logitech.com/en-ph/product/mx-master-2s-flow">Logitech MX Master 2S</a>
 mouse would fall victim to the upgrade process.</p>
 
 <p>Somewhere along the way in the fresh install of Pop!_OS 20.04, the firmware update
 manager utility decided to run. This utility decided that the firmware for the
 Logitech Unifying Receiver, the USB dongle for the mouse, needed updating. That
 would have been fine, except the update encountered an “unexpected error” and cut
-out half-way through the update. This left the mouse dongle unusable and the 
+out half-way through the update. This left the mouse dongle unusable and the
 mouse refused to connect to it.</p>
 
 <p>A quick check of <code class="language-plaintext highlighter-rouge">lsusb | grep Logitech</code> gave me <code class="language-plaintext highlighter-rouge">Bus 003 Device 005: ID 046d:aaac Logitech, Inc. USB BootLoader</code> where the dongle was plugged in. This was good news in that the dongle
-was still communicating over USB and was not hard-bricked, but it clearly isn’t 
-supposed to be a “BootLoader” device. The Pop!_OS firmware upgrade utility in 
+was still communicating over USB and was not hard-bricked, but it clearly isn’t
+supposed to be a “BootLoader” device. The Pop!_OS firmware upgrade utility in
 the Settings menu didn’t show that the device was eligible for an upgrade, but I
 assumed that somehow forcing an update would improve the situation. Thankfully I
 was introduced to the command line version of the update tool from a Stack Overflow
@@ -172,23 +172,80 @@ me to the more powerful command line version of the firmware upgrade utility.</p
 
 <div id="related">
   <h3>Related Posts</h3>
+  
   <ul class="posts">
+  
+  
+   
+  
+   
+     
+     
     
-    <li>
-      <span>08 Feb 2021 &raquo;</span>
-      <a href="/2021/02/08/rework.html">Book Review -- Rework</a>
-    </li>
     
-    <li>
-      <span>30 Jan 2021 &raquo;</span>
-      <a href="/2021/01/30/wasm-webworker.html">C++ in the Background of React with WebAssembly and WebWorkers</a>
-    </li>
+     
+   
+     
+     
     
-    <li>
-      <span>06 Dec 2020 &raquo;</span>
-      <a href="/2020/12/06/state-of-my-desk.html">State of My Desk 2020</a>
-    </li>
     
+     
+   
+     
+     
+    
+    
+    
+      <li><span>06 Dec 2020 &raquo;</span>
+      <a href="/2020/12/06/state-of-my-desk.html">State of My Desk 2020</a></li>
+       
+       
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+    
+      <li><span>07 Oct 2020 &raquo;</span>
+      <a href="/2020/10/07/gergoplex-review.html">GBoards Gergoplex Keyboard Review</a></li>
+       
+       
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+    
+      <li><span>07 Aug 2020 &raquo;</span>
+      <a href="/2020/08/07/zettelkasten-foam.html">Zettelkasten Tooling Updates</a></li>
+       
+       
+     
+   
+     
+     
+    
+    
+    
+      <li><span>09 Jun 2020 &raquo;</span>
+      <a href="/2020/06/09/iris-handwire.html">Handwired Iris Keyboard Build</a></li>
+       
+       
+        
   </ul>
 </div>
 

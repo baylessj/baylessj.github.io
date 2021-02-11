@@ -1,7 +1,6 @@
 ---
 layout: post
 tags: [productivity, keyboards]
-categories: []
 title: "Handwired Iris Keyboard Build"
 image:
   - src: iris1.jpg

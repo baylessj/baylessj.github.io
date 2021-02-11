@@ -1,16 +1,10 @@
 ---
 layout: post
 tags: [flutter, programming, android]
-categories: []
-#date: 2019-06-25 13:14:15
-#excerpt: ''
-#image: 'BASEURL/assets/blog/img/.png'
-#description:
-#permalink:
-title: 'Gradle Configuration for Firebase Usage in Flutter'
+title: "Gradle Configuration for Firebase Usage in Flutter"
 ---
 
-I recently got started developing a cross-platform app in [Flutter](https://flutter.dev/), a framework developed by Google that uses the [Dart](https://dart.dev/) programming language. One major benefit of the fact that Flutter is created by Google is the _mostly_ easy integration with Google's other services. I have come across one minor exception to this rule in my attempt to integrate [Firebase](https://firebase.google.com/) with my Flutter project, an error regarding `.dex` file generation. 
+I recently got started developing a cross-platform app in [Flutter](https://flutter.dev/), a framework developed by Google that uses the [Dart](https://dart.dev/) programming language. One major benefit of the fact that Flutter is created by Google is the _mostly_ easy integration with Google's other services. I have come across one minor exception to this rule in my attempt to integrate [Firebase](https://firebase.google.com/) with my Flutter project, an error regarding `.dex` file generation.
 
 ### Original Gradle Modifications
 

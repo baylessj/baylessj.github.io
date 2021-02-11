@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [gadgets]
+tags: [productivity]
 title: State of My Desk 2020
 image:
   - src: desk2020.jpg

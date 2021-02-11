@@ -1,10 +1,6 @@
 ---
 layout: post
 tags: [productivity, keyboards]
-#date: 2019-06-25 13:14:15
-#excerpt: ''
-#description:
-#permalink:
 title: "Alpaca Keyboards Hot Dox Review"
 image:
   - src: keyboard1.jpg

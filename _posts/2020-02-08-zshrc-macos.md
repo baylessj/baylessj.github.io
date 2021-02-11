@@ -1,18 +1,13 @@
 ---
 layout: post
 tags: [productivity, macos]
-categories: []
-#date: 2019-06-25 13:14:15
-#excerpt: ''
-#description:
-#permalink:
-title: '~ as Home does not work in MacOS .zshrc'
+title: "~ as Home does not work in MacOS .zshrc"
 ---
 
 I recently picked up a 2015 MBP to use as a development machine for my side
 project, [auToDo](https://autodo.app), since Apple won't let you make iOS apps without a Mac. I'm
 not thrilled to be developing on a platform other than my beloved [Pop! OS](https://system76.com/pop),
-but it's at least still a *nix based system.
+but it's at least still a \*nix based system.
 
 I was glad to see that, as of Catalina, MacOS uses [Zsh](https://www.zsh.org/) as its default shell.
 I use Zsh as my default shell on my linux machine so I was excited to simply

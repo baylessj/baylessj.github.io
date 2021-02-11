@@ -1,7 +1,7 @@
 ---
 layout: post
 title: GBoards Gergoplex Keyboard Review
-tags: [keyboards]
+tags: [productivity, keyboards]
 image:
   - src: gergoplex1.jpg
     alt: angled shot of the Gergoplex

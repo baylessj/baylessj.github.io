@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Hello World
-categories:
-- blog
+tags: []
 ---
 
 I'm a big fan of side-projects and I've run a [Github Pages](https://pages.github.com/)

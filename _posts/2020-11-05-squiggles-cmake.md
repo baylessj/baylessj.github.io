@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [software]
+tags: [programming, cpp]
 title: Setting up a C++ library with CMake
 ---
 
