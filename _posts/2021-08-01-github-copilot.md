@@ -1,0 +1,11 @@
+---
+layout: post
+tags: [programming]
+title: Github Copilot Beta -- My Experience
+---
+
+A couple weeks ago I received access to the Github Copilot beta. Github Copilot is a tool for writing code that is like autocomplete on steroids; it is marketed as having the ability to write whole lines and functions of code for you. Copilot is available to beta testers as a Visual Studio Code extension and supports most common programming languages.
+
+My experience with Copilot has been that it is a fantastic autocomplete tool, but it is not really a full "autocoding" tool that will produce working software from code comments. In theory, Copilot's AI model can generate whole functions worth of code to implement the description specified in its name and docstring. My usage of the tool, however, has been very similar to my usage of [tabnine]() before it, where I would rely on its autocomplete to finish trivial lines of code and docstrings. Copilot excels in speeding up this mindless writing of docstrings or boilerplate code. I don't find it to be very helpful in writing whole functions for me, but reducing the time I have to spend thinking through boilerplate code has increased the amount of time I can spend thinking through the difficult problems in my code.
+
+One serious gripe I have with Copilot, though, is the lack of regard for copyleft licenses like the GPL. The last I have read on the subject indicates that Copilot's possible recreation of GPL licensed code is _not_ a violation of the terms of the license, but my opinion is that this recreation does not match at all with the _spirit_ of the license. I feel less worry about this issue by using Copilot as a single-line autocomplete tool instead of a multi-line code generator, but this issue is still present in the product. I think my ideal solution would be a Copilot AI model that does not use any GPL+ code, sticking instead to more permissively licensed code, but I'm not sure that's feasible with thr current design of the product.
