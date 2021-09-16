@@ -4,7 +4,7 @@
  <title>The blog of Jonathan Bayless</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000"/>
- <updated>2021-02-10T19:59:19-05:00</updated>
+ <updated>2021-09-16T11:18:37-07:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jonathan Bayless</name>
@@ -13,9 +13,59 @@
 
  
  <entry>
+   <title>Job Search Experience</title>
+   <link href="http://localhost:4000/2021/09/13/job-search.html"/>
+   <updated>2021-09-13T00:00:00-07:00</updated>
+   <id>http://localhost:4000/2021/09/13/job-search</id>
+   <content type="html">
+&lt;p&gt;&lt;img src=&quot;/assets/img/job_sankey.png&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/job_sankey.png 360w, /assets/img/480/job_sankey.png 480w, /assets/img/640/job_sankey.png 640w&quot; alt=&quot;Sankey Diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The last few months have included my first foray into job searching post-college. I started looking when I had reached about 2 years of experience at my past role. In the world of software development this typically is the time when it becomes possible to find a job at a higher level (pay + title) than is available to recent college graduates. I took this opportunity to make a parallel move, however, into a different area of software development. My past three roles were as an embedded software engineer working in lower level programming languages on small electronic devices. I spent a lot of time outside of work trying my hand at web development, however, and wanted to make a switch to that field. Web development would give me an opportunity to work in higher level languages with more focus on the business requirements and less on making things work with difficult hardware constraints. In addition, the web development field has a larger set of opportunities for remote work at tech-focused companies. Making a parallel move to a new field meant that I would be staying at the same new-graduate level as I started at 2 years ago, but with an exciting set of new tech to work on.&lt;/p&gt;
+
+&lt;p&gt;The vast majority of applications that I put out were towards companies that I found through &lt;a href=&quot;https://news.ycombinator.com&quot;&gt;Hacker News’&lt;/a&gt; monthly &lt;a href=&quot;https://news.ycombinator.com/item?id=28037366&quot;&gt;Who is Hiring?&lt;/a&gt; posts. This job posting thread is an informal grouping of posts from the employees of a wide vareity of tech companies. Some of these companies are early-stage startups that are backed by Y Combinator, the company that runs Hacker News, and some are tech giants like Google and Amazon. Most of my applications went towards companies in the middle of these two groups – companies that would be large enough to afford to train up a new guy like me but not so large that they would be looking primarily for traditional candidates with a CS degree from MIT or anything.&lt;/p&gt;
+
+&lt;p&gt;There seemed to be two paths that companies would take in the interview process: some would go through the traditional path of a phone screen and a handful of technical interviews, and others would start with a coding challenge and then follow up with a couple of technical interviews. I found the former path to be the best fit for me and the interviewers that I worked with; I got the opportunity to learn more about the role and the company I had applied to before jumping right into a technical evaluation. Only one of the companies that sent me a coding challenge right off the bat later gave me an opportunity to talk about less technical aspects of the role. The others seemed to view the interview process as a simple evaluation of my technical skills with no consideration for how I would fit into their team.&lt;/p&gt;
+
+&lt;p&gt;One thing that surprised me at first about this job search was the quantity of technical interviews that most companies wanted. Applying for jobs in college usually consisted of two or three interviews including the initial phone screen. The interview process this time around usually consisted of a phone screen and then three or four technical interviews. I do have a lot more to talk about interviews now that I have more than a couple of internships on my resume, but it did still feel like an awful lot of repetition of the same technical discussion compared to the streamlined process I found when applying in college.&lt;/p&gt;
+
+&lt;p&gt;The process of finding a new role was tumultuous, with tons of technical interviews, a lot of time spent on coding challenges, and a number of frustrating “ghosting”s from recruiters late into the interview process. Looking back on this experience, I think I would have spent less time on coding challenges that came to me as the first response to an application before having a phone screen or anything. The interview process and large number of applications was worth it, though, as I’ve found a great fit for me with a company that I had not heard much of before my search. It’s a bit to early in this new role to say for sure if the switch to web development was the right long-term choice for me, but I can certainly say that my first impressions of the role have been great.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Github Copilot Beta -- My Experience</title>
+   <link href="http://localhost:4000/2021/08/01/github-copilot.html"/>
+   <updated>2021-08-01T00:00:00-07:00</updated>
+   <id>http://localhost:4000/2021/08/01/github-copilot</id>
+   <content type="html">&lt;p&gt;A couple weeks ago I received access to the &lt;a href=&quot;https://copilot.github.com/&quot;&gt;Github Copilot&lt;/a&gt; beta. Github Copilot is a tool for writing code that is like autocomplete on steroids; it is marketed as having the ability to write whole lines and functions of code for you. Copilot is available to beta testers as a Visual Studio Code extension and supports most common programming languages.&lt;/p&gt;
+
+&lt;p&gt;My experience with Copilot has been that it is a fantastic autocomplete tool, but it is not really a full “autocoding” tool that will produce working software from code comments. In theory, Copilot’s AI model can generate whole functions worth of code to implement the description specified in its name and docstring. My usage of the tool, however, has been very similar to my usage of &lt;a href=&quot;https://www.tabnine.com/&quot;&gt;tabnine&lt;/a&gt; before it, where I would rely on its autocomplete to finish trivial lines of code and docstrings. Copilot excels in speeding up this mindless writing of docstrings or boilerplate code. I don’t find it to be very helpful in writing whole functions for me, but reducing the time I have to spend thinking through boilerplate code has increased the amount of time I can spend thinking through the difficult problems in my code.&lt;/p&gt;
+
+&lt;p&gt;I don’t find there to be a huge improvement in Github Copilot’s single-line suggestions over Tabnine’s, but I do significantly prefer Copilot’s interface. Copilot’s suggestions are appending as low opacity text to the end of the line you’re typing on and a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tab&lt;/code&gt; keystroke fills in the suggestion. This is much less invasive than Tabnine and the default VSCode Intellisense suggestions that will hijack the up and down arrow keys with their floating suggestion box. Copilot is worth the switch for that point alone in my opinion, this design choice matches excellently with its niche as a superpowered autocomplete engine.&lt;/p&gt;
+
+&lt;p&gt;One serious gripe I have with Copilot, though, is the lack of regard for copyleft licenses like the GPL. The last I have read on the subject indicates that Copilot’s possible recreation of GPL licensed code is &lt;em&gt;not&lt;/em&gt; a violation of the terms of the license, but my opinion is that this recreation does not match at all with the &lt;em&gt;spirit&lt;/em&gt; of the license. I feel less worry about this issue by using Copilot as a single-line autocomplete tool instead of a multi-line code generator, but this issue is still present in the product. I think my ideal solution would be a Copilot AI model that does not use any GPL+ code, sticking instead to more permissively licensed code, but I’m not sure that’s feasible with thr current design of the product.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Starter Web App Stack -- K.I.S.S.</title>
+   <link href="http://localhost:4000/2021/05/05/autodo-kiss.html"/>
+   <updated>2021-05-05T00:00:00-07:00</updated>
+   <id>http://localhost:4000/2021/05/05/autodo-kiss</id>
+   <content type="html">&lt;p&gt;I’ve spent the last couple of years working in the evenings on my side project, &lt;a href=&quot;https://github.com/autodo-app/autodo&quot;&gt;autodo&lt;/a&gt;. autodo is not a very complicated app, but I’ve taken a long and winding path towards making it work.&lt;/p&gt;
+
+&lt;p&gt;I started out with a mobile app, only to realize that I needed a proper backend to persist the data across devices. I then looked online for an ideal stack for a first-timer’s web app. These resources largely said “Build with what you know”, which wasn’t much help for someone who had never built a web app before. The few suggestions I saw pointed to a separated frontend and backend, with React and some sort of REST API on the backend. I used Django to use my Python knowledge. I attempted to deploy this setup on a Digital Ocean VPS and found it to be a mess. I struggled with Apache configs, SSL certificates, and REST API interaction with the frontend. I gave this up after about 6 months without managing to make a working app.&lt;/p&gt;
+
+&lt;p&gt;In the last few months, I have started rebuilding autodo from scratch. This time around, I am trying to reduce the number of frameworks and complicated pieces to the app. This involves two major changes – using Django as the MVC framework it was intended to be, and deploying on Heroku. Many of my earlier troubles were with DevOps things, and Heroku manages that for me now. Using Heroku was only possible (with my level of knowledge, anyhow) by making the switch to Django only. This means that I miss out on some of the nice UI benefits of React, but getting a working app out in the world without a huge operations headache is worth it.&lt;/p&gt;
+
+&lt;p&gt;My recommendation for someone building their first web app is, yes, to use a language you know, but beyond that, use an MVC framework of some sorts. I’ve found Django to work well and Ruby on Rails is a similar MVC framework. These frameworks are basic and not the hot new tech but they cannot be beat for putting together a simple web app.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Book Review -- Rework</title>
    <link href="http://localhost:4000/2021/02/08/rework.html"/>
-   <updated>2021-02-08T00:00:00-05:00</updated>
+   <updated>2021-02-08T00:00:00-08:00</updated>
    <id>http://localhost:4000/2021/02/08/rework</id>
    <content type="html">
 &lt;p&gt;&lt;img src=&quot;/assets/img/rework.jpg&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/rework.jpg 360w, /assets/img/480/rework.jpg 480w, /assets/img/640/rework.jpg 640w&quot; alt=&quot;Rework cover&quot; /&gt;&lt;/p&gt;
@@ -54,7 +104,7 @@
  <entry>
    <title>C++ in the Background of React with WebAssembly and WebWorkers</title>
    <link href="http://localhost:4000/2021/01/30/wasm-webworker.html"/>
-   <updated>2021-01-30T00:00:00-05:00</updated>
+   <updated>2021-01-30T00:00:00-08:00</updated>
    <id>http://localhost:4000/2021/01/30/wasm-webworker</id>
    <content type="html">&lt;p&gt;My side project of choice at the moment is &lt;a href=&quot;https://github.com/baylessj/robotsquiggles&quot;&gt;Squiggles&lt;/a&gt;.
 Squiggles is a library that makes it easy to create bezier curve paths, or “Squiggles”,
@@ -194,7 +244,7 @@ it was a big help for figuring out the WebWorker integration with WASM.&lt;/p&gt
  <entry>
    <title>State of My Desk 2020</title>
    <link href="http://localhost:4000/2020/12/06/state-of-my-desk.html"/>
-   <updated>2020-12-06T00:00:00-05:00</updated>
+   <updated>2020-12-06T00:00:00-08:00</updated>
    <id>http://localhost:4000/2020/12/06/state-of-my-desk</id>
    <content type="html">
 &lt;p&gt;&lt;img src=&quot;/assets/img/desk2020.jpg&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/desk2020.jpg 360w, /assets/img/480/desk2020.jpg 480w, /assets/img/640/desk2020.jpg 640w&quot; alt=&quot;A Picture of My Desk&quot; /&gt;&lt;/p&gt;
@@ -234,7 +284,7 @@ it was a big help for figuring out the WebWorker integration with WASM.&lt;/p&gt
  <entry>
    <title>Setting up a C++ library with CMake</title>
    <link href="http://localhost:4000/2020/11/05/squiggles-cmake.html"/>
-   <updated>2020-11-05T00:00:00-05:00</updated>
+   <updated>2020-11-05T00:00:00-08:00</updated>
    <id>http://localhost:4000/2020/11/05/squiggles-cmake</id>
    <content type="html">&lt;p&gt;I recently started a new side project, &lt;a href=&quot;https://squiggles.readthedocs.io&quot;&gt;Squiggles&lt;/a&gt;, a C++ library for generating
 spline-based 2D paths for robots. This project was my first time setting up a
@@ -465,7 +515,7 @@ made it much easier to set up a clean development environment for me.&lt;/p&gt;
  <entry>
    <title>GBoards Gergoplex Keyboard Review</title>
    <link href="http://localhost:4000/2020/10/07/gergoplex-review.html"/>
-   <updated>2020-10-07T00:00:00-04:00</updated>
+   <updated>2020-10-07T00:00:00-07:00</updated>
    <id>http://localhost:4000/2020/10/07/gergoplex-review</id>
    <content type="html">
 &lt;p&gt;&lt;img src=&quot;/assets/img/gergoplex1.jpg&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/gergoplex1.jpg 360w, /assets/img/480/gergoplex1.jpg 480w, /assets/img/640/gergoplex1.jpg 640w&quot; alt=&quot;angled shot of the Gergoplex&quot; /&gt;&lt;/p&gt;
@@ -521,7 +571,7 @@ made it much easier to set up a clean development environment for me.&lt;/p&gt;
  <entry>
    <title>Book Review -- The Design of Everyday Things</title>
    <link href="http://localhost:4000/2020/08/19/design-everyday-things.html"/>
-   <updated>2020-08-19T00:00:00-04:00</updated>
+   <updated>2020-08-19T00:00:00-07:00</updated>
    <id>http://localhost:4000/2020/08/19/design-everyday-things</id>
    <content type="html">&lt;p&gt;I’ve heard The Design of Everyday Things recommended a number of times and recently picked up a copy. This book was my introduction to design theory; the most in-depth information I had gotten on design up until this had come from blog posts. I don’t have much to compare the book to as a result but I found a lot of valuable information from it.&lt;/p&gt;
 
@@ -546,7 +596,7 @@ made it much easier to set up a clean development environment for me.&lt;/p&gt;
  <entry>
    <title>Zettelkasten Tooling Updates</title>
    <link href="http://localhost:4000/2020/08/07/zettelkasten-foam.html"/>
-   <updated>2020-08-07T00:00:00-04:00</updated>
+   <updated>2020-08-07T00:00:00-07:00</updated>
    <id>http://localhost:4000/2020/08/07/zettelkasten-foam</id>
    <content type="html">&lt;p&gt;While I had posted &lt;a href=&quot;https://jonathanbayless.com/2020/03/09/zettelkasten-vimwiki.html&quot;&gt;before&lt;/a&gt; about how I felt that I had found the ideal tooling for my &lt;a href=&quot;https://zettelkasten.de&quot;&gt;Zettelkasten&lt;/a&gt; in &lt;a href=&quot;https://vimwiki.github.io&quot;&gt;VimWiki&lt;/a&gt;, I hit some growing pains with the toolset as I continued to add to my notes. When my notes were fairly small it made a lot of sense to keep all of the notes in one, large document, but that got to be difficult to work with. My Zettelkasten is still far from huge compared to the examples of others on the internet; it is around 250 unique notes at the time of writing. I bounced around to a couple other tools when I decided to move away from VimWiki and I am happily (for now, I suppose) using &lt;a href=&quot;https://foambubble.github.io&quot;&gt;Foam&lt;/a&gt;.&lt;/p&gt;
 
@@ -585,7 +635,7 @@ made it much easier to set up a clean development environment for me.&lt;/p&gt;
  <entry>
    <title>Handwired Iris Keyboard Build</title>
    <link href="http://localhost:4000/2020/06/09/iris-handwire.html"/>
-   <updated>2020-06-09T00:00:00-04:00</updated>
+   <updated>2020-06-09T00:00:00-07:00</updated>
    <id>http://localhost:4000/2020/06/09/iris-handwire</id>
    <content type="html">
 &lt;p&gt;&lt;img src=&quot;/assets/img/iris1.jpg&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/iris1.jpg 360w, /assets/img/480/iris1.jpg 480w, /assets/img/640/iris1.jpg 640w&quot; alt=&quot;Handwired Iris Keyboard&quot; /&gt;&lt;/p&gt;
@@ -809,7 +859,7 @@ that I was used to on the Hot Dox.&lt;/p&gt;
  <entry>
    <title>Fixing a soft-bricked Logitech Receiver with fwupdmgr</title>
    <link href="http://localhost:4000/2020/05/03/bricked-mx-master-receiver.html"/>
-   <updated>2020-05-03T00:00:00-04:00</updated>
+   <updated>2020-05-03T00:00:00-07:00</updated>
    <id>http://localhost:4000/2020/05/03/bricked-mx-master-receiver</id>
    <content type="html">&lt;p&gt;I was very excited for the 20.04 LTS release of &lt;a href=&quot;https://pop.system76.com/&quot;&gt;Pop!_OS&lt;/a&gt; that came out a few
 days ago. The addition of automatic window tiling and the various GNOME improvements
@@ -850,7 +900,7 @@ me to the more powerful command line version of the firmware upgrade utility.&lt
  <entry>
    <title>Vimwiki + Zettelkasten -- Note Taking Nirvana</title>
    <link href="http://localhost:4000/2020/03/09/zettelkasten-vimwiki.html"/>
-   <updated>2020-03-09T00:00:00-04:00</updated>
+   <updated>2020-03-09T00:00:00-07:00</updated>
    <id>http://localhost:4000/2020/03/09/zettelkasten-vimwiki</id>
    <content type="html">&lt;p&gt;I’ve been in a time of turmoil with note taking and text editing. I bounced around
 between a few different editors before landing on Vim full-time. I experimented
@@ -919,7 +969,7 @@ tech stack.&lt;/p&gt;
  <entry>
    <title>Code Ahead - A Painful Read That Makes Some Valid Points</title>
    <link href="http://localhost:4000/2020/02/28/code-ahead.html"/>
-   <updated>2020-02-28T00:00:00-05:00</updated>
+   <updated>2020-02-28T00:00:00-08:00</updated>
    <id>http://localhost:4000/2020/02/28/code-ahead</id>
    <content type="html">
 &lt;p&gt;&lt;img src=&quot;/assets/img/codeahead.png&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/codeahead.png 360w, /assets/img/480/codeahead.png 480w, /assets/img/640/codeahead.png 640w&quot; alt=&quot;Code Ahead Book Cover&quot; /&gt;&lt;/p&gt;
@@ -953,7 +1003,7 @@ tech stack.&lt;/p&gt;
  <entry>
    <title>~ as Home does not work in MacOS .zshrc</title>
    <link href="http://localhost:4000/2020/02/08/zshrc-macos.html"/>
-   <updated>2020-02-08T00:00:00-05:00</updated>
+   <updated>2020-02-08T00:00:00-08:00</updated>
    <id>http://localhost:4000/2020/02/08/zshrc-macos</id>
    <content type="html">&lt;p&gt;I recently picked up a 2015 MBP to use as a development machine for my side
 project, &lt;a href=&quot;https://autodo.app&quot;&gt;auToDo&lt;/a&gt;, since Apple won’t let you make iOS apps without a Mac. I’m
@@ -984,7 +1034,7 @@ in my &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.zshrc&
  <entry>
    <title>Alpaca Keyboards Hot Dox Review</title>
    <link href="http://localhost:4000/2019/09/16/hotdox-review.html"/>
-   <updated>2019-09-16T00:00:00-04:00</updated>
+   <updated>2019-09-16T00:00:00-07:00</updated>
    <id>http://localhost:4000/2019/09/16/hotdox-review</id>
    <content type="html">
 &lt;p&gt;&lt;img src=&quot;/assets/img/keyboard1.jpg&quot; sizes=&quot;`(min-width: 640px) 60vw, 90vw&quot; srcset=&quot;/assets/img/360/keyboard1.jpg 360w, /assets/img/480/keyboard1.jpg 480w, /assets/img/640/keyboard1.jpg 640w&quot; alt=&quot;keyboard photo&quot; /&gt;&lt;/p&gt;
@@ -1030,7 +1080,7 @@ in my &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.zshrc&
  <entry>
    <title>Gradle Configuration for Firebase Usage in Flutter</title>
    <link href="http://localhost:4000/2019/08/07/flutter-firebase-gradle.html"/>
-   <updated>2019-08-07T00:00:00-04:00</updated>
+   <updated>2019-08-07T00:00:00-07:00</updated>
    <id>http://localhost:4000/2019/08/07/flutter-firebase-gradle</id>
    <content type="html">&lt;p&gt;I recently got started developing a cross-platform app in &lt;a href=&quot;https://flutter.dev/&quot;&gt;Flutter&lt;/a&gt;, a framework developed by Google that uses the &lt;a href=&quot;https://dart.dev/&quot;&gt;Dart&lt;/a&gt; programming language. One major benefit of the fact that Flutter is created by Google is the &lt;em&gt;mostly&lt;/em&gt; easy integration with Google’s other services. I have come across one minor exception to this rule in my attempt to integrate &lt;a href=&quot;https://firebase.google.com/&quot;&gt;Firebase&lt;/a&gt; with my Flutter project, an error regarding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.dex&lt;/code&gt; file generation.&lt;/p&gt;
 
@@ -1250,7 +1300,7 @@ apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle p
  <entry>
    <title>Hello World</title>
    <link href="http://localhost:4000/2019/06/16/helloworld.html"/>
-   <updated>2019-06-16T00:00:00-04:00</updated>
+   <updated>2019-06-16T00:00:00-07:00</updated>
    <id>http://localhost:4000/2019/06/16/helloworld</id>
    <content type="html">&lt;p&gt;I’m a big fan of side-projects and I’ve run a &lt;a href=&quot;https://pages.github.com/&quot;&gt;Github Pages&lt;/a&gt;
 site as my personal site for a while now, so it seemed inevitable that I would take
