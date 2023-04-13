@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jonathan Bayless - Github Copilot Beta -- My Experience</title>
+    <meta name="author" content="Jonathan Bayless" />
+    <meta name="description" content="The blog of Jonathan Bayless" />
+    <link
+      rel="canonical"
+      href="https://jonathanbayless.com/2021/08/01/github-copilot.html"
+    />
+
+    <link
+      href="//fonts.googleapis.com/css?family=Open+Sans:600,800"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="Jonathan Bayless"
+      href="https://jonathanbayless.com/atom.xml"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://jonathanbayless.com/assets/css/all.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://jonathanbayless.com/css/styles.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.9.0/devicon.min.css"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="four columns sidebar"><nav>
+  <h1> </h1>
+  <a href="/">
+       
+      <img
+    src="/assets/img/me_square.jpg"
+    id="logo"
+    sizes="`(min-width: 640px) 60vw, 90vw"
+    srcset="/assets/img/360/me_square.jpg 360w, /assets/img/480/me_square.jpg 480w, /assets/img/640/me_square.jpg 640w"
+    alt="Blog Logo">
+
+
+
+    <!-- <img src="https://jonathanbayless.com/assets/img/me_square.jpg" id="logo" alt="Blog logo"/> -->
+  </a>
+  <h2>I'm <br>
+    <a href="/">Jonathan Bayless</a>.</h2>
+  <div id="bio">
+    <p>Making things, <br>
+      Writing software.</p>
+  </div>
+  <div id="resume">
+    <a href="https://jonathanbayless.com/assets/resume.pdf"><i class="fa fa-file-text"></i> Resume</a>
+  </div>
+  <div id="social">
+    <div id="stalker">
+  
+  <a title="baylessj on Github" href="https://github.com/baylessj">
+    <i class="fa fa-github-square"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a title="Jonathan Bayless on LinkedIn" href="https://www.linkedin.com/in/jonathanbayless">
+    <i class="fa fa-linkedin-square"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+  <a title="Atom feed" id="atom" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+  
+</div>
+
+  </div>
+</nav>
+</div>
+
+      <div class="eleven columns content">
+        <p class="meta">
+  August 01, 2021
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">Github Copilot Beta -- My Experience</h1>
+
+<div id="post"><p>A couple weeks ago I received access to the <a href="https://copilot.github.com/">Github Copilot</a> beta. Github Copilot is a tool for writing code that is like autocomplete on steroids; it is marketed as having the ability to write whole lines and functions of code for you. Copilot is available to beta testers as a Visual Studio Code extension and supports most common programming languages.</p>
+
+<p>My experience with Copilot has been that it is a fantastic autocomplete tool, but it is not really a full “autocoding” tool that will produce working software from code comments. In theory, Copilot’s AI model can generate whole functions worth of code to implement the description specified in its name and docstring. My usage of the tool, however, has been very similar to my usage of <a href="https://www.tabnine.com/">tabnine</a> before it, where I would rely on its autocomplete to finish trivial lines of code and docstrings. Copilot excels in speeding up this mindless writing of docstrings or boilerplate code. I don’t find it to be very helpful in writing whole functions for me, but reducing the time I have to spend thinking through boilerplate code has increased the amount of time I can spend thinking through the difficult problems in my code.</p>
+
+<p>I don’t find there to be a huge improvement in Github Copilot’s single-line suggestions over Tabnine’s, but I do significantly prefer Copilot’s interface. Copilot’s suggestions are appending as low opacity text to the end of the line you’re typing on and a <code class="language-plaintext highlighter-rouge">Tab</code> keystroke fills in the suggestion. This is much less invasive than Tabnine and the default VSCode Intellisense suggestions that will hijack the up and down arrow keys with their floating suggestion box. Copilot is worth the switch for that point alone in my opinion, this design choice matches excellently with its niche as a superpowered autocomplete engine.</p>
+
+<p>One serious gripe I have with Copilot, though, is the lack of regard for copyleft licenses like the GPL. The last I have read on the subject indicates that Copilot’s possible recreation of GPL licensed code is <em>not</em> a violation of the terms of the license, but my opinion is that this recreation does not match at all with the <em>spirit</em> of the license. I feel less worry about this issue by using Copilot as a single-line autocomplete tool instead of a multi-line code generator, but this issue is still present in the product. I think my ideal solution would be a Copilot AI model that does not use any GPL+ code, sticking instead to more permissively licensed code, but I’m not sure that’s feasible with thr current design of the product.</p>
+</div>
+
+
+
+<div id="related">
+  <h3>Related Posts</h3>
+  
+  <ul class="posts">
+  
+  
+   
+  
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+    
+      <li><span>13 Sep 2021 &raquo;</span>
+      <a href="/2021/09/13/job-search.html">Job Search Experience</a></li>
+       
+       
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+    
+      <li><span>05 May 2021 &raquo;</span>
+      <a href="/2021/05/05/autodo-kiss.html">Starter Web App Stack -- K.I.S.S.</a></li>
+       
+       
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+    
+      <li><span>30 Jan 2021 &raquo;</span>
+      <a href="/2021/01/30/wasm-webworker.html">C++ in the Background of React with WebAssembly and WebWorkers</a></li>
+       
+       
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+    
+      <li><span>05 Nov 2020 &raquo;</span>
+      <a href="/2020/11/05/squiggles-cmake.html">Setting up a C++ library with CMake</a></li>
+       
+       
+        
+  </ul>
+</div>
+
+
+        <div class="footer"><div class="disclaimer">
+  
+  <p>
+    The postings on this site are my own and don't necessarily represent my 
+    employer’s positions, strategies or opinions.
+  </p>
+  
+
+  <p>
+    © Jonathan Bayless, 2023 &mdash; built with <a href="http://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/swanson/lagom">Lagom theme</a>
+  </p>
+</div></div>
+      </div>
+    </div>
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-168929396-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>

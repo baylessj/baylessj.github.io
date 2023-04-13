@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jonathan Bayless - Zettelkasten Tooling Updates</title>
+    <meta name="author" content="Jonathan Bayless" />
+    <meta name="description" content="The blog of Jonathan Bayless" />
+    <link
+      rel="canonical"
+      href="https://jonathanbayless.com/2020/08/07/zettelkasten-foam.html"
+    />
+
+    <link
+      href="//fonts.googleapis.com/css?family=Open+Sans:600,800"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="Jonathan Bayless"
+      href="https://jonathanbayless.com/atom.xml"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://jonathanbayless.com/assets/css/all.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://jonathanbayless.com/css/styles.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.9.0/devicon.min.css"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="four columns sidebar"><nav>
+  <h1> </h1>
+  <a href="/">
+       
+      <img
+    src="/assets/img/me_square.jpg"
+    id="logo"
+    sizes="`(min-width: 640px) 60vw, 90vw"
+    srcset="/assets/img/360/me_square.jpg 360w, /assets/img/480/me_square.jpg 480w, /assets/img/640/me_square.jpg 640w"
+    alt="Blog Logo">
+
+
+
+    <!-- <img src="https://jonathanbayless.com/assets/img/me_square.jpg" id="logo" alt="Blog logo"/> -->
+  </a>
+  <h2>I'm <br>
+    <a href="/">Jonathan Bayless</a>.</h2>
+  <div id="bio">
+    <p>Making things, <br>
+      Writing software.</p>
+  </div>
+  <div id="resume">
+    <a href="https://jonathanbayless.com/assets/resume.pdf"><i class="fa fa-file-text"></i> Resume</a>
+  </div>
+  <div id="social">
+    <div id="stalker">
+  
+  <a title="baylessj on Github" href="https://github.com/baylessj">
+    <i class="fa fa-github-square"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a title="Jonathan Bayless on LinkedIn" href="https://www.linkedin.com/in/jonathanbayless">
+    <i class="fa fa-linkedin-square"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+  <a title="Atom feed" id="atom" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+  
+</div>
+
+  </div>
+</nav>
+</div>
+
+      <div class="eleven columns content">
+        <p class="meta">
+  August 07, 2020
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">Zettelkasten Tooling Updates</h1>
+
+<div id="post"><p>While I had posted <a href="https://jonathanbayless.com/2020/03/09/zettelkasten-vimwiki.html">before</a> about how I felt that I had found the ideal tooling for my <a href="https://zettelkasten.de">Zettelkasten</a> in <a href="https://vimwiki.github.io">VimWiki</a>, I hit some growing pains with the toolset as I continued to add to my notes. When my notes were fairly small it made a lot of sense to keep all of the notes in one, large document, but that got to be difficult to work with. My Zettelkasten is still far from huge compared to the examples of others on the internet; it is around 250 unique notes at the time of writing. I bounced around to a couple other tools when I decided to move away from VimWiki and I am happily (for now, I suppose) using <a href="https://foambubble.github.io">Foam</a>.</p>
+
+<h2 id="attempts-to-scale-vimwiki">Attempts to scale VimWiki</h2>
+
+<p>I don’t intend to imply that I jumped ship from VimWiki as soon as editing my notes became the slightest bit difficult, quite the opposite in fact. I prefer using Vim for most of my text editing needs so staying in Vim to edit my notes reduced the resistance for switching mental modes to taking notes from my usual code writing. I found two additions to my VimWiki workflow that made editing easier.</p>
+
+<p>The first addition was isn’t a dedicated tool, really, but was a new addition to my Vim skills. I learned more about folding sections in Vim and set up my config to indent VimWiki headers. This allowed me to reduce the visual clutter of the many notes in the wiki file. This created a new problem, though, because I used the first line or two of each note as a way of determining what it was about when adding backlinks. This meant that I had to constantly fold and unfold notes, defeating most of the approach’s benefits.</p>
+
+<p>The second addition was an <a href="https://gist.github.com/EinfachTool/9071573">excellent plugin</a> for Vim that allowed me to view the VimWiki headers in a standard ctags sidebar. This made it possible to see the hierarchy of notes based on their Zettelkasten tags in a simple viewer. This had the same issue as the folding addition, though, in that I couldn’t see the description when trying to make links between documents. It was an improvement but I still struggled to find the right place to add new notes and to find existing notes when creating links.</p>
+
+<h2 id="restructuring-to-one-file-per-note">Restructuring to one file per note</h2>
+
+<p>It became pretty clear that the recommended folder structure for a Zettelkasten in most tools is to use one markdown file for each note. This adds a bit more of a clear hierarchical structure to the notes than Luhman seemed to recommend in his personal Zettelkasten, but I actually have found this structure to be an improvement. The consensus seems to be a bit split on file naming, whether to use descriptive names or just the Zettelkasten identifier. I chose to put both in the file name, and so far it has made for a nice balance of easy discoverability of the note’s topic and conciseness. The recommended structure for <a href="https://dendron.so">Dendron</a> used one large root folder and dots to indicate the document hierarchy. I found this large folder to have many of the same shortcomings that the single VimWiki had, it was hard to navigate. The nested folder structure gave me the ability to easily find notes and only see the notes that I was concerned with.</p>
+
+<h2 id="obsidian">Obsidian</h2>
+
+<p>I found out about <a href="https://obsidian.md">Obsidian</a> from their beta announcement on Hacker News right around the time that I started to hit those growing pains with VimWiki. This convenient timing combined with the excellent feature set of Obsidian’s app made it a perfect choice for switching away from VimWiki. I was more easily able to create and edit links in Obsidian and the Obsidian editor added a very neat graph view showing the relationship between notes. This graph view helped cement for me the idea that the Zettelkasten should be a “second brain” with each note as a neuron connecting to others to form a brain-like network.</p>
+
+<p>It was much easier to add a lot more information to my Zettelkasten when using Obsidian as the editor. The folder based structure made it easier to find the right place to add items and the autocompletion for adding links between notes helped me connect notes better than before. The autocompletion wasn’t great though; it seemed to look for any note name that contained one of the letters in the search rather than considering the search to be a real word. This behavior meant that I often had to type out the whole name of the note anyways.</p>
+
+<h2 id="dendron">Dendron</h2>
+
+<p>My issues with the link autocompletion and a worry about Obsidian’s licensing with work-related notes led me to look further for a similar Zettelkasten tool. I also discovered <a href="https://dendron.so">Dendron</a> through a Hacker News post and liked that it was built on Visual Studio Code rather than a standalone editor. Visual Studio Code is my other editor of choice along with Vim so using a Zettelkasten tool in VSCode would give me that same-environment benefit that VimWiki had. Switching to Visual Studio Code brought back a number of of convenient text editing shortcuts that I hadn’t realized I had missed until I switched, namely the ability to delete a whole line in a keyboard shortcut.</p>
+
+<p>Dendron’s link autocompletion also seemed to have issues, though. It wouldn’t split up search queries into individual letters like Obsidian, thankfully, but often the plugin would crash or would it fail to redirect me to the linked file properly. The graph view would similarly crash quite often. This is all understandable given that Dendron is in a beta stage currently, but I was a bit frustrated with the instability given how much I relied on the tool for note taking.</p>
+
+<h2 id="foam">Foam</h2>
+
+<p>Once again, I found a new option for my Zettelkasten through a Hacker News post. This time the tool was a very similar alternative to Dendron, a set of Visual Studio Code plugins called <a href="https://foambubble.github.io">Foam</a>. Foam covered a similar feature set as Obsidian and Dendron with the addition of a Jekyll/Github Pages integration. I hope to, at some point, clean up my Zettelkasten and get it added to my personal site here since it can be added to a Jekyll site. Foam didn’t add much other new functionality besides that, but so far Foam has been able to reliably handle my ever-growing Zettelkasten with no crashes or major bugs. The link autocompletion is <em>excellent</em> so I am able to write links to other documents without the cognitive overload of trying to remember their Zettelkasten identifiers. The graph view isn’t quite as nice as Obsidian’s but it does the trick, showing me what notes have proper links and which ones need some attention.</p>
+
+<p>Overall, I’m very happy with Foam. The other tools I tested along the way were suitable but I’ve found a great fit for my workflow in Foam. I’ll be sure to report back with a follow-up blog post again as my notes grow further, hopefully I’ll be able to report that Foam still fits my needs.</p>
+</div>
+
+
+
+<div id="related">
+  <h3>Related Posts</h3>
+  
+  <ul class="posts">
+  
+  
+   
+  
+   
+     
+     
+    
+    
+    
+      <li><span>17 Dec 2021 &raquo;</span>
+      <a href="/2021/12/17/state-of-my-desk.html">State of My Desk 2021</a></li>
+       
+       
+     
+   
+     
+     
+    
+    
+    
+      <li><span>26 Nov 2021 &raquo;</span>
+      <a href="/2021/11/26/zettelktasten-obsidian.html">Zettelkasten Tooling Updates - Obsidian</a></li>
+       
+       
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+    
+      <li><span>06 Dec 2020 &raquo;</span>
+      <a href="/2020/12/06/state-of-my-desk.html">State of My Desk 2020</a></li>
+       
+       
+     
+   
+     
+     
+    
+    
+     
+   
+     
+     
+    
+    
+    
+      <li><span>07 Oct 2020 &raquo;</span>
+      <a href="/2020/10/07/gergoplex-review.html">GBoards Gergoplex Keyboard Review</a></li>
+       
+       
+        
+  </ul>
+</div>
+
+
+        <div class="footer"><div class="disclaimer">
+  
+  <p>
+    The postings on this site are my own and don't necessarily represent my 
+    employer’s positions, strategies or opinions.
+  </p>
+  
+
+  <p>
+    © Jonathan Bayless, 2023 &mdash; built with <a href="http://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/swanson/lagom">Lagom theme</a>
+  </p>
+</div></div>
+      </div>
+    </div>
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-168929396-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>
