@@ -6,9 +6,6 @@ exclude: [vendor, LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
 sass:
   sass_dir: _includes/_sass
 
-plugins:
-  - jekyll-hn-comments
-
 # Responsive Images
 image_url: /assets/img
 default_width: "640"
